@@ -1,3 +1,0 @@
-# Footchain Client App
-
-
