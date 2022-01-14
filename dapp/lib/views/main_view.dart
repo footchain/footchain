@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class MainView extends StatefulWidget {
@@ -11,25 +13,60 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(onPressed: () {}, child: Text("Mint Tokens")),
-            ],
+          Image.asset(
+            "assets/images/stadium_bg.jpg",
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
+            alignment: Alignment.center,
           ),
-          SizedBox(
-            height: 24,
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              height: 400,
+              width: 400,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(24),
+                  boxShadow: [
+                    BoxShadow(
+                        offset: Offset(0, 18),
+                        blurRadius: 32,
+                        color: Color(0xFFD0D2DA).withOpacity(0.15))
+                  ]),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, "/airdrop");
+                          },
+                          child: Text("Airdrop")),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, "/mint/nft");
+                          },
+                          child: Text("Mint NFT")),
+                    ],
+                  )
+                ],
+              ),
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(onPressed: () {}, child: Text("Mint NFT")),
-            ],
-          )
         ],
       ),
     );

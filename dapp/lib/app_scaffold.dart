@@ -1,4 +1,5 @@
 import 'package:dapp/commands/account/set_current_account_command.dart';
+import 'package:dapp/commands/contracts/load_contracts_command.dart';
 import 'package:dapp/commands/init_app_command.dart';
 import 'package:dapp/models/app_model.dart';
 import 'package:dapp/views/main_view.dart';
@@ -26,10 +27,12 @@ class _AppScaffoldState extends State<AppScaffold> {
   }
 
   void _initApp() async {
-    await InitAppCommand().execute();
     if (Ethereum.isSupported) {
+      print("ETHEREUM DISPONIVEL");
+      requestUserConnectAccount();
+
       ethereum!.onAccountsChanged((accs) {
-        print("conta mudou");
+        print("nova conta");
         SetCurrentAccountCommand().execute(accs.first);
       });
     } else {
@@ -40,11 +43,22 @@ class _AppScaffoldState extends State<AppScaffold> {
     });
   }
 
+  Future requestUserConnectAccount() async {
+    try {
+      final accs = await ethereum!.requestAccount();
+      if (accs.isNotEmpty) {
+        await InitAppCommand().execute(provider, accs.first);
+      }
+    } on Exception catch (e) {
+      // TODO
+      print("USUARIO CANCELOU");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     String? currentAccount =
         context.select<AppModel, String?>((value) => value.currentAccount);
-
     if (_loadingApp) {
       return const SplashView();
     } else {

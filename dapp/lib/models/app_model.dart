@@ -16,6 +16,20 @@ class AppModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  Contract? _airdropContract;
+  Contract? get airdropContract => _airdropContract;
+  set airdropContract(Contract? contract) {
+    _airdropContract = contract;
+    notifyListeners();
+  }
+
+  Contract? _marketplaceContract;
+  Contract? get marketplaceContract => _marketplaceContract;
+  set marketplaceContract(Contract? contract) {
+    _marketplaceContract = contract;
+    notifyListeners();
+  }
+
   String? _currentAccount;
   String? get currentAccount => _currentAccount;
   set currentAccount(String? account) {

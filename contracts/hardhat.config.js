@@ -10,8 +10,8 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
+const PRIVATE_KEY = "";
+
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -22,5 +22,14 @@ module.exports = {
     enabled: false,
     token: 'AVAX',
     gasPriceApi: 'https://api.snowtrace.io/api?module=proxy&action=eth_gasPrice'
+  },
+  networks: {
+    hardhat: {
+    },
+    velasTestnet: {
+      chainId: 111,
+      url: `https://evmexplorer.testnet.velas.com/rpc`,
+      accounts: [`${PRIVATE_KEY}`]
+    }
   }
 };
