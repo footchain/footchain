@@ -2,7 +2,6 @@ import 'package:dapp/models/app_model.dart';
 import 'package:dapp/setup_service_locator.dart';
 import 'package:dapp/views/airdrop_view.dart';
 import 'package:dapp/views/mint_nft_view.dart';
-import 'package:dapp/views/mint_view.dart';
 import 'package:flutter/material.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:get_it/get_it.dart';
@@ -38,7 +37,6 @@ class MyApp extends StatelessWidget {
             routes: {
               '/': (context) => const AppScaffold(),
               '/airdrop': (context) => const AirdropView(),
-              '/mint/token': (context) => const MintView(),
               '/mint/nft': (context) => const MintNftView(),
             });
       }),

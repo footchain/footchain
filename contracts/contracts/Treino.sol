@@ -1,21 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-/**
-
-import "../node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "../node_modules/@openzeppelin/contracts/security/Pausable.sol";
-import "../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
-*/
-
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "./FootchainCoin.sol";
 
-contract Training is Pausable {
+contract Treino is Pausable {
     using SafeMath for uint256;
 
     modifier onlyOwner(uint256 playerId) {
@@ -36,7 +28,7 @@ contract Training is Pausable {
 
     ERC20PresetMinterPauser public footchainCoin;
     IERC721 public playerContract;
-    uint256 private THIRTY_MINUTES = 1; //30 * 60;
+    uint256 private THIRTY_MINUTES =  1 * 60;
 
     constructor(address footchain, address playerContractAddress) {
         playerContract = IERC721(playerContractAddress);
