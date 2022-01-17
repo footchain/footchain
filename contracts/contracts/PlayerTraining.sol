@@ -10,7 +10,7 @@ interface Footchain {
     function mint(address to, uint256 amount) external;
 }
 
-contract Treino is Pausable {
+contract PlayerTraining is Pausable {
     using SafeMath for uint256;
 
     modifier onlyAdmin() {
@@ -19,7 +19,7 @@ contract Treino is Pausable {
     }
 
     modifier onlyOwner(uint256 playerId) {
-        address owner = jogador.ownerOf(playerId);
+        address owner = player.ownerOf(playerId);
         require(msg.sender == owner, "YOU ARE NOT OWNER OF THE PLAYER");
         _;
     }
@@ -32,7 +32,7 @@ contract Treino is Pausable {
         _unpause();
     }
 
-    struct PlayerTraining {
+    struct TrainingControl {
         uint256 playerId;
         address owner;
         bool working;
@@ -40,29 +40,29 @@ contract Treino is Pausable {
         bool isExist;
     }
 
-    mapping(uint256 => PlayerTraining) playersTraining;
+    mapping(uint256 => TrainingControl) playersTrainingControl;
 
     Footchain public footchain;
-    IERC721 public jogador;
+    IERC721 public player;
     uint256 private THIRTY_MINUTES = 1 * 60;
     address admin;
 
-    constructor(Footchain footchain_, IERC721 jogador_) {
-        jogador = jogador_;
+    constructor(Footchain footchain_, IERC721 player_) {
+        player = player_;
         footchain = footchain_;
         admin = msg.sender;
     }
 
     function start(uint256 playerId) public onlyOwner(playerId) {
-        if (playersTraining[playerId].isExist) {
+        if (playersTrainingControl[playerId].isExist) {
             require(
-                playersTraining[playerId].working == false,
+                playersTrainingControl[playerId].working == false,
                 "ALREADY WORKING"
             );
-            playersTraining[playerId].working = true;
-            playersTraining[playerId].beginTime = block.timestamp;
+            playersTrainingControl[playerId].working = true;
+            playersTrainingControl[playerId].beginTime = block.timestamp;
         } else {
-            playersTraining[playerId] = PlayerTraining(
+            playersTrainingControl[playerId] = TrainingControl(
                 playerId,
                 msg.sender,
                 true,
@@ -74,18 +74,18 @@ contract Treino is Pausable {
 
     function finish(uint256 playerId) public onlyOwner(playerId) {
         //verifica se esta em modo working
-        require(playersTraining[playerId].working);
-        uint256 elapsedTime = playersTraining[playerId].beginTime.add(
+        require(playersTrainingControl[playerId].working);
+        uint256 elapsedTime = playersTrainingControl[playerId].beginTime.add(
             THIRTY_MINUTES
         );
         require(elapsedTime < block.timestamp, "TRAINING NOT FINISHED");
         //verifica se a data de inicio é superior a 30 minutos
-        playersTraining[playerId].working = false;
+        playersTrainingControl[playerId].working = false;
         footchain.mint(msg.sender, 1 ether);
 
     }
 
     function getPlayerStatus(uint256 playerId) public view returns (bool) {
-        return playersTraining[playerId].working;
+        return playersTrainingControl[playerId].working;
     }
 }

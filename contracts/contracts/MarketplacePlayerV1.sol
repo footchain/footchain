@@ -6,15 +6,15 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
-import "./Jogador.sol";
+import "./Player.sol";
 
-contract MercadoV1 is Ownable, Pausable {
+contract MarketplacePlayerV1 is Ownable, Pausable {
     IERC20 public token;
-    Jogador public nft;
+    Player public nft;
     uint256 public nftPrice;
     address payable recipient;
 
-    constructor(IERC20 token_, Jogador nft_, address payable recipient_, uint256 nftPrice_) {
+    constructor(IERC20 token_, Player nft_, address payable recipient_, uint256 nftPrice_) {
         token = token_;
         nft = nft_;
         recipient = recipient_;

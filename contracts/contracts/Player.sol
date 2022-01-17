@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 
-contract Jogador is ERC721, ERC721Enumerable, AccessControl, Pausable {
+contract Player is ERC721, ERC721Enumerable, AccessControl, Pausable {
     using Counters for Counters.Counter;
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");    
@@ -16,7 +16,7 @@ contract Jogador is ERC721, ERC721Enumerable, AccessControl, Pausable {
 
     mapping(uint256 => string) private _tokenURIs;
 
-    constructor() ERC721("Jogador", "JFC") {
+    constructor() ERC721("Footchain Player", "FCP") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
