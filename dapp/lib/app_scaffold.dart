@@ -1,14 +1,16 @@
-import 'package:dapp/commands/account/set_current_account_command.dart';
-import 'package:dapp/commands/contracts/load_contracts_command.dart';
-import 'package:dapp/commands/init_app_command.dart';
-import 'package:dapp/models/app_model.dart';
-import 'package:dapp/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web3/flutter_web3.dart';
-import 'package:provider/src/provider.dart';
+import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
 
-import 'views/login_view.dart';
+import 'commands/account/set_current_account_command.dart';
+import 'commands/init_app_command.dart';
+import 'localizations/localizations.dart';
+import 'models/app_model.dart';
+import 'router.dart';
+import 'utils/utils.dart';
 import 'views/splash_view.dart';
+import 'widgets/widgets.dart';
 
 class AppScaffold extends StatefulWidget {
   const AppScaffold({Key? key}) : super(key: key);
@@ -27,16 +29,18 @@ class _AppScaffoldState extends State<AppScaffold> {
   }
 
   void _initApp() async {
+    GetIt.I.registerSingleton<BuildContext>(context);
+    await Future.delayed(const Duration(seconds: 2), () => true);
     if (Ethereum.isSupported) {
-      print("ETHEREUM DISPONIVEL");
       requestUserConnectAccount();
 
       ethereum!.onAccountsChanged((accs) {
-        print("nova conta");
         SetCurrentAccountCommand().execute(accs.first);
       });
     } else {
-      print("ETHEREUM NAO DISPONIVEL");
+      showSnackbarMessage(
+        text: CpfLocalizations.of(context).networkErrorMessage,
+      );
     }
     setState(() {
       _loadingApp = false;
@@ -57,16 +61,84 @@ class _AppScaffoldState extends State<AppScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    String? currentAccount =
-        context.select<AppModel, String?>((value) => value.currentAccount);
     if (_loadingApp) {
       return const SplashView();
     } else {
-      if (currentAccount != null) {
-        return const MainView();
-      } else {
-        return const LoginView();
-      }
+      return Scaffold(
+        drawerEnableOpenDragGesture: false,
+        drawer: _drawer(context),
+        extendBodyBehindAppBar: true,
+        appBar: CustomAppBar(),
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            const SoccerFieldWidget(),
+            Container(
+              decoration: const BoxDecoration(
+                gradient: RadialGradient(
+                  center: Alignment.center, // near the top right
+                  radius: 0.7,
+                  colors: <Color>[
+                    Colors.transparent,
+                    Colors.transparent, // yellow sun
+                    Colors.black54, // blue sky
+                  ],
+                ),
+              ),
+            ),
+            Consumer<AppModel>(builder: (context, appModel, child) {
+              return Column(
+                children: [
+                  Expanded(
+                    child: Navigator(
+                      key: appModel.navigatorKey,
+                      onGenerateRoute: generateRoute,
+                      initialRoute: appModel.currentRoute,
+                    ),
+                  ),
+                ],
+              );
+            }),
+            Consumer<AppModel>(
+              child: const MenuWidget(),
+              builder: (context, appModel, child) {
+                return AnimatedPositioned(
+                  bottom: appModel.gameModeActive
+                      ? (MediaQuery.of(context).size.width > 620
+                          ? MediaQuery.of(context).size.width / 2 * -1
+                          : MediaQuery.of(context).size.width / 4 * -1)
+                      : 0,
+                  right: appModel.gameModeActive
+                      ? (MediaQuery.of(context).size.width > 620
+                          ? MediaQuery.of(context).size.height / 2 * -1
+                          : MediaQuery.of(context).size.height / 4 * -1)
+                      : 0,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.fastOutSlowIn,
+                  child: child!,
+                );
+              },
+            ),
+          ],
+        ),
+      );
     }
+  }
+
+  Widget _drawer(BuildContext context) {
+    return const Align(
+      alignment: Alignment.centerRight,
+      child: Padding(
+        padding: EdgeInsets.only(right: 20),
+        child: ItensMenu(
+          inDrawer: true,
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
