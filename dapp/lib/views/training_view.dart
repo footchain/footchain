@@ -1,5 +1,5 @@
 import 'package:dapp/commands/contracts/marketplace/buy_nft_command.dart';
-import 'package:dapp/commands/contracts/nft/player/get_players_by_account__command.dart';
+import 'package:dapp/commands/contracts/nft/player/get_players_by_account_command.dart';
 import 'package:dapp/commands/contracts/token/approve_command.dart';
 import 'package:dapp/commands/training/player/start_training_command.dart';
 import 'package:dapp/commands/training/player/finish_training_command.dart';
