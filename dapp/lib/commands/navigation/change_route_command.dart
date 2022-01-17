@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../localizations/cpf_localizations.dart';
+import '../../localizations/custom_localizations.dart';
 import '../../storage/storage.dart';
 import '../../utils/constants/constants.dart';
 import '../../utils/show_snarkbar_message.dart';
@@ -14,7 +14,7 @@ class ChangeRouteCommand extends BaseCommand {
       await ConnectMetamaskCommand().execute();
       if (!appModel.connected) {
         showSnackbarMessage(
-            text: CpfLocalizations.of(GetIt.I.get<BuildContext>())
+            text: CustomLocalizations.of(GetIt.I.get<BuildContext>())
                 .networkErrorMessage);
         return false;
       }

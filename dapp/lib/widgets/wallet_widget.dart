@@ -74,7 +74,7 @@ class TokenBalanceWidget extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       child: Text(
-        '\$CPF: ${balance ?? '0'}',
+        '\$FTC: ${balance ?? '0'}',
         style: Theme.of(context)
             .textTheme
             .bodyText2

@@ -39,7 +39,7 @@ class _AppScaffoldState extends State<AppScaffold> {
       });
     } else {
       showSnackbarMessage(
-        text: CpfLocalizations.of(context).networkErrorMessage,
+        text: CustomLocalizations.of(context).networkErrorMessage,
       );
     }
     setState(() {

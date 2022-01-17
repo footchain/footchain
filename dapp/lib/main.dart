@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             localizationsDelegates: const [
-              CpfLocalizationsDelegate(),
+              CustomLocalizationsDelegate(),
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
             ],
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
               }
               return currentLocale;
             },
-            title: 'Crypto Foot',
+            title: 'Footchain',
             theme: ThemeData(
               primarySwatch: Colors.red,
               textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Inter'),

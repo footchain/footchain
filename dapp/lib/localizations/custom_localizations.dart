@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CpfLocalizations {
+class CustomLocalizations {
   final Locale locale;
 
-  CpfLocalizations(this.locale);
+  CustomLocalizations(this.locale);
 
-  static CpfLocalizations of(BuildContext context) {
-    return Localizations.of<CpfLocalizations>(context, CpfLocalizations)!;
+  static CustomLocalizations of(BuildContext context) {
+    return Localizations.of<CustomLocalizations>(context, CustomLocalizations)!;
   }
 
   static const _localizedValues = <String, Map<String, String>>{
@@ -52,7 +52,7 @@ class CpfLocalizations {
           'Whitelist opening for the sale of the first 5,000 NFTs',
       'roadmapTitle2': '30/01/2022',
       'roadmapMessage2':
-          'Launch of the CPF token and start of the sale of NFTs',
+          'Launch of the FTC token and start of the sale of NFTs',
       'roadmapTitle3': '15/02/2022',
       'roadmapMessage3': 'Opening the game in Alpha mode',
       'roadmapTitle4': '25/02/2022',
@@ -105,7 +105,7 @@ class CpfLocalizations {
       'roadmapMessage1':
           'Abertura para Whitelist da venda dos primeiros 5 mil NFTs ',
       'roadmapTitle2': '30/01/2022',
-      'roadmapMessage2': 'Lançamento do token CPF e início da venda dos NFTs',
+      'roadmapMessage2': 'Lançamento do token FTC e início da venda dos NFTs',
       'roadmapTitle3': '15/02/2022',
       'roadmapMessage3': 'Abertura do jogo em modo Alpha',
       'roadmapTitle4': '25/02/2022',
