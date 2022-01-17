@@ -1,5 +1,3 @@
-import 'package:dapp/contracts/FootchainCoinContract.dart';
-
 class Constants {
   static const footchainCoinAddress =
       "0x3e8B192434D40BCe6619fF8d9866Fecb1Cbc0C6e";
