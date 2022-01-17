@@ -4,13 +4,13 @@ class TrainingContract {
     {
       "inputs": [
         {
-          "internalType": "address",
-          "name": "footchain",
+          "internalType": "contract Footchain",
+          "name": "footchain_",
           "type": "address"
         },
         {
-          "internalType": "address",
-          "name": "playerContractAddress",
+          "internalType": "contract IERC721",
+          "name": "jogador_",
           "type": "address"
         }
       ],
@@ -58,10 +58,10 @@ class TrainingContract {
     },
     {
       "inputs": [],
-      "name": "footchainCoin",
+      "name": "footchain",
       "outputs": [
         {
-          "internalType": "contract ERC20PresetMinterPauser",
+          "internalType": "contract Footchain",
           "name": "",
           "type": "address"
         }
@@ -90,12 +90,12 @@ class TrainingContract {
     },
     {
       "inputs": [],
-      "name": "paused",
+      "name": "jogador",
       "outputs": [
         {
-          "internalType": "bool",
+          "internalType": "contract IERC721",
           "name": "",
-          "type": "bool"
+          "type": "address"
         }
       ],
       "stateMutability": "view",
@@ -103,12 +103,19 @@ class TrainingContract {
     },
     {
       "inputs": [],
-      "name": "playerContract",
+      "name": "pause",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "paused",
       "outputs": [
         {
-          "internalType": "contract IERC721",
+          "internalType": "bool",
           "name": "",
-          "type": "address"
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -123,6 +130,13 @@ class TrainingContract {
         }
       ],
       "name": "start",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "unpause",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

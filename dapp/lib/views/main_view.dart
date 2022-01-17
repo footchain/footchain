@@ -1,5 +1,6 @@
 import 'dart:html';
 
+import 'package:dapp/commands/contracts/token/grant_role_command.dart';
 import 'package:flutter/material.dart';
 
 class MainView extends StatefulWidget {
@@ -61,6 +62,19 @@ class _MainViewState extends State<MainView> {
                             Navigator.pushNamed(context, "/mint/nft");
                           },
                           child: Text("Mint NFT")),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, "/training");
+                          },
+                          child: Text("Treino")),
                     ],
                   )
                 ],

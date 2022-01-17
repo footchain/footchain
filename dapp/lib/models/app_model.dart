@@ -30,6 +30,13 @@ class AppModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  Contract? _treinoContract;
+  Contract? get treinoContract => _treinoContract;
+  set treinoContract(Contract? contract) {
+    _treinoContract = contract;
+    notifyListeners();
+  }
+
   String? _currentAccount;
   String? get currentAccount => _currentAccount;
   set currentAccount(String? account) {

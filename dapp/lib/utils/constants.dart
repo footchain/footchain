@@ -3,8 +3,8 @@ import 'package:dapp/contracts/FootchainCoinContract.dart';
 class Constants {
   static const footchainCoinAddress =
       "0x3e8B192434D40BCe6619fF8d9866Fecb1Cbc0C6e";
-  static const nftAddress = "0x518bA768C9955F91d9755aA8956266f9B4f87eeD";
-  static const trainingAddress = "0x1E07A3dEa59725CAd2c1189b1499B4c362C87bF0";
+  static const nftAddress = "0x89572231AC4D92e3b2c3888eBd21091DA1f882Dd";
+  static const trainingAddress = "0x8e32f1034A90Cbfb9d8fAe0A6dB724ea039a28de";
   static const airdropAddress = "0x42d16D03136fCAcFeD45Ee7d373218619f59bB25";
   static const maintainersAddress =
       "0x3124527D4884864Efce8884bF5bb41c8cc901f8c";
