@@ -1,5 +1,6 @@
 import 'dart:ui' as ui;
 
+import 'package:dapp/utils/constants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
@@ -9,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'app_scaffold.dart';
 import 'localizations/localizations.dart';
 import 'models/app_model.dart';
+import 'router.dart';
 import 'setup_service_locator.dart';
 
 void main() async {
@@ -63,7 +65,10 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.red,
               textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Inter'),
             ),
-            home: const AppScaffold(),
+            builder: (context, child) => AppScaffold(child: child),
+            navigatorKey: appModel.navigatorKey,
+            onGenerateRoute: generateRoute,
+            initialRoute: airdropRoute,
           );
         },
       ),

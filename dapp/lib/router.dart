@@ -11,32 +11,34 @@ import 'views/start_view.dart';
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case playersRoute:
-      return _getPageRoute(const PlayersView());
+      return _getPageRoute(const PlayersView(), settings);
     case airdropRoute:
-      return _getPageRoute(const AirdropView());
+      return _getPageRoute(const AirdropView(), settings);
     case startRoute:
-      return _getPageRoute(const StartView());
+      return _getPageRoute(const StartView(), settings);
     case howToPlayRoute:
-      return _getPageRoute(const HowToPlayView());
+      return _getPageRoute(const HowToPlayView(), settings);
     case roadmapRoute:
-      return _getPageRoute(const RoadmapView());
+      return _getPageRoute(const RoadmapView(), settings);
     case mintNft:
-      return _getPageRoute(const MintNftView());
+      return _getPageRoute(const MintNftView(), settings);
     default:
-      return _getPageRoute(const StartView());
+      return _getPageRoute(const StartView(), settings);
   }
 }
 
-PageRoute _getPageRoute(Widget child) {
+PageRoute _getPageRoute(Widget child, RouteSettings settings) {
   return _FadeRoute(
     child: child,
+    routeName: settings.name ?? 'no_name',
   );
 }
 
 class _FadeRoute extends PageRouteBuilder {
   final Widget child;
-  _FadeRoute({required this.child})
+  _FadeRoute({required this.child, required String routeName})
       : super(
+          settings: RouteSettings(name: routeName),
           pageBuilder: (
             BuildContext context,
             Animation<double> animation,

@@ -7,13 +7,13 @@ import 'commands/account/set_current_account_command.dart';
 import 'commands/init_app_command.dart';
 import 'localizations/localizations.dart';
 import 'models/app_model.dart';
-import 'router.dart';
 import 'utils/utils.dart';
 import 'views/splash_view.dart';
 import 'widgets/widgets.dart';
 
 class AppScaffold extends StatefulWidget {
-  const AppScaffold({Key? key}) : super(key: key);
+  final Widget? child;
+  const AppScaffold({Key? key, this.child}) : super(key: key);
 
   @override
   _AppScaffoldState createState() => _AppScaffoldState();
@@ -89,13 +89,7 @@ class _AppScaffoldState extends State<AppScaffold> {
             Consumer<AppModel>(builder: (context, appModel, child) {
               return Column(
                 children: [
-                  Expanded(
-                    child: Navigator(
-                      key: appModel.navigatorKey,
-                      onGenerateRoute: generateRoute,
-                      initialRoute: appModel.currentRoute,
-                    ),
-                  ),
+                  Expanded(child: widget.child ?? const SizedBox()),
                 ],
               );
             }),
