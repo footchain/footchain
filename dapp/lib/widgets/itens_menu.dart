@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../localizations/cpf_localizations.dart';
+import '../localizations/custom_localizations.dart';
 import '../models/app_model.dart';
 import '../utils/constants/constants.dart';
 import 'change_route_button_widget.dart';
@@ -22,7 +22,7 @@ class ItensMenu extends StatelessWidget {
           children: [
             ChangeRouteButtonWidget(
               route: playersRoute,
-              label: CpfLocalizations.of(context).startButton,
+              label: CustomLocalizations.of(context).startButton,
               onPressed: () => closeDrawer(context),
             ),
             const SizedBox(height: 16),
@@ -40,18 +40,18 @@ class ItensMenu extends StatelessWidget {
             const SizedBox(height: 16),
             ChangeRouteButtonWidget(
               route: howToPlayRoute,
-              label: CpfLocalizations.of(context).howToPlayButton,
+              label: CustomLocalizations.of(context).howToPlayButton,
               onPressed: () => closeDrawer(context),
             ),
             const SizedBox(height: 16),
             ChangeRouteButtonWidget(
               route: roadmapRoute,
-              label: CpfLocalizations.of(context).roadmapButton,
+              label: CustomLocalizations.of(context).roadmapButton,
               onPressed: () => closeDrawer(context),
             ),
             const SizedBox(height: 16),
             ChangeRouteButtonWidget(
-              label: CpfLocalizations.of(context).whitepaperButton,
+              label: CustomLocalizations.of(context).whitepaperButton,
               onPressed: () {
                 launch('https://mattheus-pirovani.gitbook.io/whitepaper/');
                 closeDrawer(context);

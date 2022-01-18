@@ -34,8 +34,8 @@ class LogoWidget extends StatelessWidget {
       ),
       alignment: Alignment.topCenter,
       padding: MediaQuery.of(context).size.width > 620
-          ? const EdgeInsets.only(top: 20)
-          : const EdgeInsets.only(top: 5),
+          ? const EdgeInsets.only(top: 40)
+          : const EdgeInsets.only(top: 10),
       margin: MediaQuery.of(context).size.width > 620
           ? const EdgeInsets.only(left: 16)
           : const EdgeInsets.only(left: 16, top: 40),
@@ -45,10 +45,10 @@ class LogoWidget extends StatelessWidget {
         children: const [
           FittedBox(
             child: Text(
-              'Crypto',
+              'F T C',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 32,
                 color: Colors.white,
                 shadows: [
                   BoxShadow(
@@ -62,25 +62,6 @@ class LogoWidget extends StatelessWidget {
               ),
             ),
           ),
-          FittedBox(
-            child: Text(
-              'Foot',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-                color: Colors.white,
-                shadows: [
-                  BoxShadow(
-                      color: Colors.black,
-                      blurRadius: 15,
-                      spreadRadius: 0,
-                      blurStyle: BlurStyle.outer),
-                  BoxShadow(
-                      color: Colors.white, blurRadius: 2, spreadRadius: 5),
-                ],
-              ),
-            ),
-          )
         ],
       ),
     );

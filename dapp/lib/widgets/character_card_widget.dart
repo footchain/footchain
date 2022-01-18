@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../dto/character_dto.dart';
-import '../localizations/cpf_localizations.dart';
+import '../localizations/custom_localizations.dart';
 import '../utils/color_by_rarity.dart';
 import '../utils/constants/constants.dart';
 import 'widgets.dart';
@@ -251,7 +251,7 @@ class CharacterCardWidget extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {},
                   child: Text(
-                    CpfLocalizations.of(context).startTrainingButton,
+                    CustomLocalizations.of(context).startTrainingButton,
                     style: const TextStyle(fontSize: 14),
                   ),
                 ),

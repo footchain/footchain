@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../localizations/cpf_localizations.dart';
+import '../localizations/custom_localizations.dart';
 import '../utils/utils.dart';
 
 class RoadmapPoint {
@@ -102,27 +102,27 @@ class _RoadmapViewState extends State<RoadmapView>
   Widget build(BuildContext context) {
     roadmapPoints = [
       RoadmapPoint(
-        title: CpfLocalizations.of(context).roadmapTitle1,
+        title: CustomLocalizations.of(context).roadmapTitle1,
         items: [
-          CpfLocalizations.of(context).roadmapMessage1,
+          CustomLocalizations.of(context).roadmapMessage1,
         ],
       ),
       RoadmapPoint(
-        title: CpfLocalizations.of(context).roadmapTitle2,
+        title: CustomLocalizations.of(context).roadmapTitle2,
         items: [
-          CpfLocalizations.of(context).roadmapMessage2,
+          CustomLocalizations.of(context).roadmapMessage2,
         ],
       ),
       RoadmapPoint(
-        title: CpfLocalizations.of(context).roadmapTitle3,
+        title: CustomLocalizations.of(context).roadmapTitle3,
         items: [
-          CpfLocalizations.of(context).roadmapMessage3,
+          CustomLocalizations.of(context).roadmapMessage3,
         ],
       ),
       RoadmapPoint(
-        title: CpfLocalizations.of(context).roadmapTitle4,
+        title: CustomLocalizations.of(context).roadmapTitle4,
         items: [
-          CpfLocalizations.of(context).roadmapMessage4,
+          CustomLocalizations.of(context).roadmapMessage4,
         ],
       ),
     ];
