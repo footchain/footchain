@@ -1,2 +1,2 @@
-export 'cpf_localizations.dart';
-export 'cpf_localizations_delegate.dart';
+export 'custom_localizations.dart';
+export 'custom_localizations_delegate.dart';

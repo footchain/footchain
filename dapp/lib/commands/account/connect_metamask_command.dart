@@ -22,7 +22,7 @@ class ConnectMetamaskCommand extends BaseCommand {
         }
       } else {
         showSnackbarMessage(
-            text: CpfLocalizations.of(GetIt.I.get<BuildContext>())
+            text: CustomLocalizations.of(GetIt.I.get<BuildContext>())
                 .networkErrorMessage);
       }
     } on Exception catch (_) {}

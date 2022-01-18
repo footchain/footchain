@@ -55,7 +55,7 @@ class PlayButtonWidget extends StatelessWidget {
                   borderRadius: borderRadiusAll,
                 ),
                 child: Text(
-                  CpfLocalizations.of(context).startButton,
+                  CustomLocalizations.of(context).startButton,
                   style: TextStyle(
                     color: colorPrimary,
                     fontWeight: FontWeight.bold,

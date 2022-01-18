@@ -36,7 +36,7 @@ class ConnectButtonWidget extends StatelessWidget {
           children: [
             svg,
             Text(
-              CpfLocalizations.of(context).connectAccountButton,
+              CustomLocalizations.of(context).connectAccountButton,
               style: const TextStyle(
                 fontWeight: FontWeight.w800,
               ),

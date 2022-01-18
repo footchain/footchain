@@ -18,7 +18,7 @@ class HowToPlayView extends StatelessWidget {
           children: [
             RightArea(
               context,
-              descricao: CpfLocalizations.of(context).howToPlayMessage1,
+              descricao: CustomLocalizations.of(context).howToPlayMessage1,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +33,7 @@ class HowToPlayView extends StatelessWidget {
             SizedBox(width: double.infinity, child: CustomDivider()),
             LeftArea(
               context,
-              descricao: CpfLocalizations.of(context).howToPlayMessage2,
+              descricao: CustomLocalizations.of(context).howToPlayMessage2,
               children: const [
                 JumpAnimationWidget(
                   child: RandomPlayerWidget(
@@ -43,14 +43,14 @@ class HowToPlayView extends StatelessWidget {
               ],
             ),
             CenterArea(
-              descricao: CpfLocalizations.of(context).howToPlayMessage3,
+              descricao: CustomLocalizations.of(context).howToPlayMessage3,
             ),
             SizedBox(width: double.infinity, child: CustomDivider()),
             CenterArea(
-              descricao: CpfLocalizations.of(context).howToPlayMessage4,
+              descricao: CustomLocalizations.of(context).howToPlayMessage4,
             ),
             CenterArea(
-              descricao: CpfLocalizations.of(context).howToPlayMessage5,
+              descricao: CustomLocalizations.of(context).howToPlayMessage5,
             ),
           ],
         ),

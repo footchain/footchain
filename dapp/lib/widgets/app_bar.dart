@@ -77,19 +77,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       ChangeRouteButtonWidget(
         route: playersRoute,
-        label: CpfLocalizations.of(context).soccerPlayersButton,
+        label: CustomLocalizations.of(context).soccerPlayersButton,
       ),
       ChangeRouteButtonWidget(
         route: null,
-        label: CpfLocalizations.of(context).buildingsButton,
+        label: CustomLocalizations.of(context).buildingsButton,
       ),
       ChangeRouteButtonWidget(
         route: null,
-        label: CpfLocalizations.of(context).matchesButton,
+        label: CustomLocalizations.of(context).matchesButton,
       ),
       ChangeRouteButtonWidget(
         route: null,
-        label: CpfLocalizations.of(context).marketplaceButton,
+        label: CustomLocalizations.of(context).marketplaceButton,
       ),
       user != null && MediaQuery.of(context).size.width > 1030
           ? Padding(
