@@ -17,7 +17,7 @@ void main() async {
   initServiceLocator();
   WidgetsFlutterBinding.ensureInitialized();
   await GRecaptchaV3.ready("6Lch6fkdAAAAAC3qfB1WEVgXXCdP0tBc7-c4-R3x",
-      showBadge: true);
+      showBadge: false);
   runApp(const MyApp());
 }
 

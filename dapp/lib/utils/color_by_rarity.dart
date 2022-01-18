@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../enuns/rarities.dart';
+import '../enums/rarities.dart';
 import 'constants/constants.dart';
 
 Color colorByRarity(Rarities? rarity) {

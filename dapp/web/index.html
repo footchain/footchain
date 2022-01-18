@@ -38,6 +38,7 @@
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lch6fkdAAAAAC3qfB1WEVgXXCdP0tBc7-c4-R3x"></script>
   <script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
@@ -105,12 +106,12 @@
   <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
   <!-- ReCaptcha -->
   <script>
-    var onloadCallback = function() {
+    var onloadCallback = function () {
       grecaptcha.render('recaptcha_container', {
-            'sitekey': '6Lch6fkdAAAAAC3qfB1WEVgXXCdP0tBc7-c4-R3x',
-            'badge': 'bottomleft',
-            'size': 'invisible'
-        });
+        'sitekey': '6Lch6fkdAAAAAC3qfB1WEVgXXCdP0tBc7-c4-R3x',
+        'badge': 'bottomleft',
+        'size': 'invisible'
+      });
     };
   </script>
   <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>

@@ -6,6 +6,6 @@ import 'package:flutter_web3/flutter_web3.dart';
 class LoadPlayerContractCommand extends BaseCommand {
   Future execute(provider) async {
     appModel.nftContract = Contract(
-        Constants.nftAddress, PlayerContract.abi, provider!.getSigner());
+        Constants.playerAddress, PlayerContract.abi, provider!.getSigner());
   }
 }

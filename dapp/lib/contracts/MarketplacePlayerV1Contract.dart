@@ -1,4 +1,4 @@
-class MercadoV1Contract {
+class MarketplacePlayerV1Contract {
   static const abi = '''
   [
     {

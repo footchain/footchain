@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../dto/character_dto.dart';
-import '../enuns/rarities.dart';
+import '../enums/rarities.dart';
 import '../widgets/widgets.dart';
 
 class PlayersView extends StatelessWidget {

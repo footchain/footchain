@@ -1,4 +1,4 @@
-class FootchainCoin {
+class Footchain {
   static const abi = ''' 
   [
     {

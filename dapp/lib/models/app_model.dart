@@ -27,8 +27,8 @@ class AppModel extends ChangeNotifier {
   }
 
   Contract? _marketplaceContract;
-  Contract? get marketplaceContract => _marketplaceContract;
-  set marketplaceContract(Contract? contract) {
+  Contract? get marketplacePlayerV1Contract => _marketplaceContract;
+  set marketplacePlayerV1Contract(Contract? contract) {
     _marketplaceContract = contract;
     notifyListeners();
   }
