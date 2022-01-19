@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web3/flutter_web3.dart';
+import 'package:get_it/get_it.dart';
 
 import '../dto/user_dto.dart';
 import '../utils/constants/constants.dart';
@@ -40,13 +41,6 @@ class AppModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  String? _currentAccount;
-  String? get currentAccount => _currentAccount;
-  set currentAccount(String? account) {
-    _currentAccount = account;
-    notifyListeners();
-  }
-
   UserDto? _userDto;
   UserDto? get user => _userDto;
   set user(UserDto? user) {
@@ -62,8 +56,15 @@ class AppModel extends ChangeNotifier {
       user != null &&
       user!.address != null &&
       user!.address!.isNotEmpty;
-  String _currentRoute = airdropRoute;
-  String get currentRoute => _currentRoute;
+  String _currentRoute = startRoute;
+  String get currentRoute {
+    try {
+      return ModalRoute.of(GetIt.I.get<BuildContext>())!.settings.name!;
+    } catch (e) {
+      return _currentRoute;
+    }
+  }
+
   set currentRoute(String route) {
     _currentRoute = route;
     notifyListeners();

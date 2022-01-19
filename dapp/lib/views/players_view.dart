@@ -1,47 +1,60 @@
 import 'package:flutter/material.dart';
 
-import '../dto/character_dto.dart';
-import '../enums/rarities.dart';
+import '../commands/contracts/nft/player/get_players_by_account_command.dart';
 import '../widgets/widgets.dart';
 
-class PlayersView extends StatelessWidget {
+class PlayersView extends StatefulWidget {
   const PlayersView({Key? key}) : super(key: key);
 
   @override
+  State<PlayersView> createState() => _PlayersViewState();
+}
+
+class _PlayersViewState extends State<PlayersView> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: BaseTemplate(
-        backgroundColor: Colors.transparent,
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Column(
-            children: [
-              Wrap(
-                spacing: 32,
-                runSpacing: 32,
+    return FutureBuilder<List<BigInt>>(
+      future: GetPlayersByAccountCommand().execute(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+              child: SizedBox(width: 100, child: CircularProgressIndicator()));
+        }
+
+        if (snapshot.data == null) {
+          return const Text('No content');
+        }
+
+        var players = snapshot.data!;
+
+        return Center(
+          child: BaseTemplate(
+            backgroundColor: Colors.transparent,
+            child: Padding(
+              padding: const EdgeInsets.all(32),
+              child: Column(
                 children: [
-                  CharacterCardWidget(
-                    character: Character()..rarity = Rarities.common,
+                  Wrap(
+                    spacing: 32,
+                    runSpacing: 32,
+                    children: players.map<Widget>((token) {
+                      return CharacterCardWidget(
+                        token: token,
+                      );
+                    }).toList(),
                   ),
-                  CharacterCardWidget(
-                    character: Character()..rarity = Rarities.unusual,
-                  ),
-                  CharacterCardWidget(
-                    character: Character()..rarity = Rarities.rare,
-                  ),
-                  CharacterCardWidget(
-                    character: Character()..rarity = Rarities.phenomenon,
-                  ),
-                  CharacterCardWidget(
-                    character: Character()..rarity = Rarities.legendary,
-                  ),
+                  const SizedBox(height: 32),
                 ],
               ),
-              const SizedBox(height: 32),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

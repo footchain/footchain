@@ -13,10 +13,6 @@ class InitAppCommand extends BaseCommand {
     await SetCurrentAccountCommand().execute(account);
 
     final storage = GetIt.I.get<Storage>();
-    final currentRoute = await storage.read('currentRoute');
-    if (currentRoute != null) {
-      appModel.currentRoute = currentRoute;
-    }
     final user = await storage.read('user');
     if (user != null) {
       ConnectMetamaskCommand().execute();

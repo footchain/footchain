@@ -3,19 +3,21 @@ import 'package:flutter/material.dart';
 import '../enums/rarities.dart';
 import 'constants/constants.dart';
 
-Color colorByRarity(Rarities? rarity) {
-  switch (rarity) {
-    case Rarities.common:
-      return colorCommon;
-    case Rarities.unusual:
-      return colorUnusual;
-    case Rarities.rare:
-      return colorRare;
-    case Rarities.phenomenon:
-      return colorPhenomenon;
-    case Rarities.legendary:
-      return colorLegendary;
-    default:
-      return colorCommon;
+Color colorByRarity(String? rarity) {
+  if (rarity == Rarities.common.name) {
+    return colorCommon;
   }
+  if (rarity == Rarities.unusual.name) {
+    return colorUnusual;
+  }
+  if (rarity == Rarities.rare.name) {
+    return colorRare;
+  }
+  if (rarity == Rarities.phenomenon.name) {
+    return colorPhenomenon;
+  }
+  if (rarity == Rarities.legendary.name) {
+    return colorLegendary;
+  }
+  return colorCommon;
 }
