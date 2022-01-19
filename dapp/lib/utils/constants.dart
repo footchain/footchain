@@ -7,4 +7,5 @@ class Constants {
   static const teamAddress = "0x3124527D4884864Efce8884bF5bb41c8cc901f8c";
   static const marketplacePlayerV1Address =
       "0x2Bb76C3805257AAAb57D2ad32fF1De1Dd5a195a8";
+  static const nftUrl = "https://gateway.pinata.cloud/ipfs/";
 }

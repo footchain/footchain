@@ -3,7 +3,6 @@ import 'package:flutter_web3/flutter_web3.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
-import 'commands/account/set_current_account_command.dart';
 import 'commands/init_app_command.dart';
 import 'localizations/localizations.dart';
 import 'models/app_model.dart';
@@ -33,10 +32,6 @@ class _AppScaffoldState extends State<AppScaffold> {
     await Future.delayed(const Duration(seconds: 2), () => true);
     if (Ethereum.isSupported) {
       requestUserConnectAccount();
-
-      ethereum!.onAccountsChanged((accs) {
-        SetCurrentAccountCommand().execute(accs.first);
-      });
     } else {
       showSnackbarMessage(
         text: CustomLocalizations.of(context).networkErrorMessage,
