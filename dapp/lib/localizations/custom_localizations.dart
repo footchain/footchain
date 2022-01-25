@@ -44,8 +44,10 @@ class CustomLocalizations {
               '🚶‍♂️ Position\n',
 
       // Air drop
-      'airdropMessage': 'Mint your nft',
-
+      'airdropMessage1': 'We will issue a total of 1,000,000 FTCs via Airdrop.',
+      'airdropMessage2': 'You will be entitled to 10 FTC per wallet.',
+      'requestAirdropButton': "Request",
+      'airdropTransactionResult': 'Transaction',
       // Roadmap
       'roadmapTitle1': '15/01/2022',
       'roadmapMessage1':
@@ -98,8 +100,11 @@ class CustomLocalizations {
               '🚶‍♂️ Posição\n\n',
 
       // Air drop
-      'airdropMessage': 'Mintar seu nft',
-
+      'airdropMessage1':
+          'Emitiremos um total de 1.000.000 de FTCs via Airdrop.',
+      'airdropMessage2': 'Você terá direito a 10 FTC por carteira.',
+      'requestAirdropButton': "Requisitar",
+      'airdropTransactionResult': 'Transação',
       // Roadmap
       'roadmapTitle1': '15/01/2022',
       'roadmapMessage1':
@@ -156,8 +161,14 @@ class CustomLocalizations {
       _localizedValues[locale.languageCode]!['howToPlayMessage5']!;
 
   // Airdrop
-  String get airdropMessage =>
-      _localizedValues[locale.languageCode]!['airdropMessage']!;
+  String get airdropMessage1 =>
+      _localizedValues[locale.languageCode]!['airdropMessage1']!;
+  String get airdropMessage2 =>
+      _localizedValues[locale.languageCode]!['airdropMessage2']!;
+  String get requestAirdropButton =>
+      _localizedValues[locale.languageCode]!['requestAirdropButton']!;
+  String get airdropTransactionResult =>
+      _localizedValues[locale.languageCode]!['airdropTransactionResult']!;
 
   // Roadmap
   String get roadmapTitle1 =>
