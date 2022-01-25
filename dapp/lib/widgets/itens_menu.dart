@@ -34,7 +34,7 @@ class ItensMenu extends StatelessWidget {
             const SizedBox(height: 16),
             ChangeRouteButtonWidget(
               route: mintNft,
-              label: 'Mint NFT',
+              label: CustomLocalizations.of(context).boxButton,
               onPressed: () => closeDrawer(context),
             ),
             const SizedBox(height: 16),

@@ -11,6 +11,8 @@ class CustomLocalizations {
 
   static const _localizedValues = <String, Map<String, String>>{
     'en': {
+      //generic
+      'transaction': 'Transaction',
       // buttons
       'startButton': 'Play',
       'howToPlayButton': 'How to play?',
@@ -22,7 +24,7 @@ class CustomLocalizations {
       'buildingsButton': 'Buildings',
       'matchesButton': 'Matches',
       'marketplaceButton': 'Marketplace',
-
+      'boxButton': 'BOX',
       // How to play
       'howToPlayMessage1':
           'Welcome to the world of football! From now on you will have the chance to be a millionaire in the world of football. You will have the chance to hire professionals, some not so professionals, to bring money and success to your company. In addition, you will be able to acquire structures that can put your company in "otô patamar"',
@@ -47,7 +49,7 @@ class CustomLocalizations {
       'airdropMessage1': 'We will issue a total of 1,000,000 FTCs via Airdrop.',
       'airdropMessage2': 'You will be entitled to 10 FTC per wallet.',
       'requestAirdropButton': "Request",
-      'airdropTransactionResult': 'Transaction',
+
       // Roadmap
       'roadmapTitle1': '15/01/2022',
       'roadmapMessage1':
@@ -60,6 +62,13 @@ class CustomLocalizations {
       'roadmapTitle4': '25/02/2022',
       'roadmapMessage4': 'Opening of token withdraw',
 
+      //Mint NFT
+      'mintTitle': 'Buy new BOX',
+      'mintTitle1':
+          'In the current phase, only PLAYER characters will be created and their characteristics will be generated randomly.',
+      'mintTitle2': 'Each mint of a new character will cost 10 FTC.',
+      'mintButton': 'Create',
+
       // Erro messages
       'networkErrorMessage': 'Check if the network is available.',
 
@@ -67,6 +76,8 @@ class CustomLocalizations {
       'startTrainingButton': 'Start training',
     },
     'pt': {
+      //generic
+      'transaction': 'Transação',
       // buttons
       'startButton': 'Jogar',
       'howToPlayButton': 'Como jogar?',
@@ -78,6 +89,7 @@ class CustomLocalizations {
       'buildingsButton': 'Edifícios',
       'matchesButton': 'Partidas',
       'marketplaceButton': 'Mercado',
+      'boxButton': 'BOX',
 
       // How to play
       'howToPlayMessage1':
@@ -104,7 +116,6 @@ class CustomLocalizations {
           'Emitiremos um total de 1.000.000 de FTCs via Airdrop.',
       'airdropMessage2': 'Você terá direito a 10 FTC por carteira.',
       'requestAirdropButton': "Requisitar",
-      'airdropTransactionResult': 'Transação',
       // Roadmap
       'roadmapTitle1': '15/01/2022',
       'roadmapMessage1':
@@ -116,6 +127,12 @@ class CustomLocalizations {
       'roadmapTitle4': '25/02/2022',
       'roadmapMessage4': 'Abertura dos saques do token',
 
+      //Mint NFT
+      'mintTitle': 'Comprar BOX',
+      'mintTitle1':
+          'Na fase atual apenas personagens do tipo JOGADOR serão criados e suas características serão geradas de forma aleatória.',
+      'mintTitle2': 'Cada emissão de um novo personagem custará 10 FTC.',
+      'mintButton': 'Comprar',
       // Erro messages
       'networkErrorMessage': 'Verifique se a rede está disponível.',
 
@@ -126,6 +143,9 @@ class CustomLocalizations {
 
   static List<String> languages() => _localizedValues.keys.toList();
 
+  //generic
+  String get transaction =>
+      _localizedValues[locale.languageCode]!['transaction']!;
   // buttons
   String get startButton =>
       _localizedValues[locale.languageCode]!['startButton']!;
@@ -147,6 +167,7 @@ class CustomLocalizations {
       _localizedValues[locale.languageCode]!['matchesButton']!;
   String get marketplaceButton =>
       _localizedValues[locale.languageCode]!['marketplaceButton']!;
+  String get boxButton => _localizedValues[locale.languageCode]!['boxButton']!;
 
   // How to play
   String get howToPlayMessage1 =>
@@ -167,8 +188,6 @@ class CustomLocalizations {
       _localizedValues[locale.languageCode]!['airdropMessage2']!;
   String get requestAirdropButton =>
       _localizedValues[locale.languageCode]!['requestAirdropButton']!;
-  String get airdropTransactionResult =>
-      _localizedValues[locale.languageCode]!['airdropTransactionResult']!;
 
   // Roadmap
   String get roadmapTitle1 =>
@@ -187,6 +206,15 @@ class CustomLocalizations {
       _localizedValues[locale.languageCode]!['roadmapTitle4']!;
   String get roadmapMessage4 =>
       _localizedValues[locale.languageCode]!['roadmapMessage4']!;
+
+  //Mint NFT
+  String get mintTitle => _localizedValues[locale.languageCode]!['mintTitle']!;
+  String get mintTitle1 =>
+      _localizedValues[locale.languageCode]!['mintTitle1']!;
+  String get mintTitle2 =>
+      _localizedValues[locale.languageCode]!['mintTitle2']!;
+  String get mintButton =>
+      _localizedValues[locale.languageCode]!['mintButton']!;
 
   // Erro Messages
   String get networkErrorMessage =>

@@ -12,3 +12,4 @@ export 'play_button_widget.dart';
 export 'random_player_widget.dart';
 export 'soccer_field_widget.dart';
 export 'wallet_widget.dart';
+export 'transaction_result_widget.dart';

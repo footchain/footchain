@@ -4,6 +4,7 @@ import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 
 import '../commands/contracts/marketplace/buy_nft_command.dart';
 import '../commands/contracts/token/approve_command.dart';
+import '../localizations/localizations.dart';
 import '../widgets/widgets.dart';
 
 class MintNftView extends StatefulWidget {
@@ -35,88 +36,79 @@ class _MintNftViewState extends State<MintNftView> {
         child: Column(
           children: [
             Center(
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                height: 400,
-                width: 400,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(24),
-                    boxShadow: [
-                      BoxShadow(
-                          offset: const Offset(0, 18),
-                          blurRadius: 32,
-                          color: const Color(0xFFD0D2DA).withOpacity(0.15))
-                    ]),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Player NFT",
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    ElevatedButton(
-                        onPressed: () async {
-                          String token = await GRecaptchaV3.execute('submit') ??
-                              'null returned';
-                          try {
-                            setState(() {
-                              _executingTransaction = true;
-                            });
-                            final resultApprove =
-                                await ApproveCommand().execute();
-                            if (resultApprove != null) {
-                              final result = await BuyNftCommand().execute();
-                              setState(() {
-                                _executingTransaction = false;
-                                if (result != null) {
-                                  _transactionHash = result;
-                                }
-                              });
-                            } else {
-                              setState(() {
-                                _executingTransaction = false;
-                              });
-                            }
-                          } on EthereumException catch (e) {
-                            setState(() {
-                              _executingTransaction = false;
-                              _errorMessage = e.data["message"];
-                            });
-                          }
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text("Buy",
-                              style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold)),
-                        )),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    if (_executingTransaction) _buildProcessingTransaction(),
-                    if (_transactionHash != "")
-                      SelectableText("TRANSACTION: $_transactionHash"),
-                    if (_errorMessage != "")
-                      Text(
-                        _errorMessage.toUpperCase(),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.red[400],
-                            fontWeight: FontWeight.bold),
-                      )
-                  ],
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    CustomLocalizations.of(context).mintTitle,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(CustomLocalizations.of(context).mintTitle1),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(CustomLocalizations.of(context).mintTitle2),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  if (!_executingTransaction) _buildMintButton(context),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  if (_executingTransaction) _buildProcessingTransaction(),
+                  TransactionResultWidget(
+                    txHash: _transactionHash,
+                    errorMessage: _errorMessage,
+                  ),
+                  _buildHowToOpenBox()
+                ],
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  ElevatedButton _buildMintButton(BuildContext context) {
+    return ElevatedButton(
+        onPressed: _mintNft,
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(CustomLocalizations.of(context).mintButton,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        ));
+  }
+
+  void _mintNft() async {
+    String token = await GRecaptchaV3.execute('submit') ?? 'null returned';
+    try {
+      setState(() {
+        _executingTransaction = true;
+      });
+      final resultApprove = await ApproveCommand().execute();
+      if (resultApprove != null) {
+        final result = await BuyNftCommand().execute();
+        setState(() {
+          _executingTransaction = false;
+          if (result != null) {
+            _transactionHash = result;
+          }
+        });
+      } else {
+        setState(() {
+          _executingTransaction = false;
+        });
+      }
+    } on EthereumException catch (e) {
+      setState(() {
+        _executingTransaction = false;
+        _errorMessage = e.data["message"];
+      });
+    }
   }
 
   List<Widget> _buildTransactionArea() {
@@ -134,6 +126,16 @@ class _MintNftViewState extends State<MintNftView> {
     ));
     return widgets;
   }
+
+  Widget _buildHowToOpenBox() => Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+            color: Colors.yellow[100],
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.yellow, width: 3)),
+        child: Text(
+            "A box poderá ser aberta na tela de Personagens. Menu: Jogar => Personagens"),
+      );
 
   Widget _buildProcessingTransaction() => const CircularProgressIndicator();
 }

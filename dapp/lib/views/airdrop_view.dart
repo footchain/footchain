@@ -1,11 +1,10 @@
-import 'package:dapp/localizations/localizations.dart';
-import 'package:dapp/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web3/flutter_web3.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../commands/airdrop/request_aidrop_command.dart';
+import '../localizations/localizations.dart';
 import '../widgets/widgets.dart';
 
 class AirdropView extends StatefulWidget {
@@ -83,36 +82,10 @@ class _AirdropViewState extends State<AirdropView> {
                     height: 24,
                   ),
                   if (_executingTransaction) _buildProcessingTransaction(),
-                  if (_transactionHash != "")
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SelectableText(
-                          CustomLocalizations.of(context)
-                              .airdropTransactionResult,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                        MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: () => launch(
-                                Constants.explorerUriTx + _transactionHash),
-                            child: Text(_transactionHash,
-                                style: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
-                  if (_errorMessage != "")
-                    Text(
-                      _errorMessage.toUpperCase(),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.red[400], fontWeight: FontWeight.bold),
-                    )
+                  TransactionResultWidget(
+                    txHash: _transactionHash,
+                    errorMessage: _errorMessage,
+                  )
                 ],
               ),
             ),
