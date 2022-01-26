@@ -49,7 +49,7 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
       var uri = await GetPlayerUriByIdCommand().execute(_tokenId!);
       if (uri.isNotEmpty) {
         setState(() {
-          _tokenUri = uri;
+          _tokenUri = uri.replaceFirst('ipfs://', '');
           _tokenId = null;
         });
       }
@@ -143,6 +143,7 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                   textAlign: TextAlign.center,
                 ),
               ),
+              const SizedBox(height: 8),
               SizedBox(
                 child: Text(
                   '${character.name}',

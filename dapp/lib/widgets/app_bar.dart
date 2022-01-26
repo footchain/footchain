@@ -6,6 +6,7 @@ import '../dto/user_dto.dart';
 import '../localizations/localizations.dart';
 import '../models/app_model.dart';
 import '../utils/constants/constants.dart';
+import '../utils/utils.dart';
 import 'widgets.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -81,15 +82,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       ChangeRouteButtonWidget(
         route: null,
-        label: CustomLocalizations.of(context).buildingsButton,
-      ),
-      ChangeRouteButtonWidget(
-        route: null,
-        label: CustomLocalizations.of(context).matchesButton,
-      ),
-      ChangeRouteButtonWidget(
-        route: null,
         label: CustomLocalizations.of(context).marketplaceButton,
+        onPressed: () {
+          showSnackbarMessage(
+              text: CustomLocalizations.of(context).comingSoonMessage);
+        },
       ),
       user != null && MediaQuery.of(context).size.width > 1030
           ? Padding(

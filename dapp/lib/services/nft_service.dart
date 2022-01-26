@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../dto/character_dto.dart';
+import '../dto/response_dto.dart';
 import '../utils/constants.dart';
 
 class NftService {
@@ -18,12 +19,14 @@ class NftService {
     String signature,
   ) async {
     var url = Uri.parse('${Constants.functionUri}generateMetadata');
-    var headers = <String, String>{
-      'Content-Type': 'application/json',
-    };
-    var body = jsonEncode(
-        <String, String>{"tokenId": "$tokenId", "signature": signature});
-    var response = await http.post(url, body: body, headers: headers);
-    return response.body;
+
+    var response = await http
+        .post(url, body: {"tokenId": "$tokenId", "signature": signature});
+    Map<String, dynamic> map = jsonDecode(response.body);
+    var responseDto = ResponseDto.fromJson(map);
+    if (responseDto.success) {
+      return map['hash'];
+    }
+    return '';
   }
 }
