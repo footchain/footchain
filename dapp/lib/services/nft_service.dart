@@ -18,7 +18,12 @@ class NftService {
     String signature,
   ) async {
     var url = Uri.parse('${Constants.functionUri}generateMetadata');
-    var response = await http.post(url, body: {tokenId, signature});
+    var headers = <String, String>{
+      'Content-Type': 'application/json',
+    };
+    var body = jsonEncode(
+        <String, String>{"tokenId": "$tokenId", "signature": signature});
+    var response = await http.post(url, body: body, headers: headers);
     return response.body;
   }
 }

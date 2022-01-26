@@ -4,8 +4,12 @@ import '../../../base_command.dart';
 
 class PlayerGenerateMetadataCommand extends BaseCommand {
   Future<String> execute(BigInt tokenId) async {
-    var signature =
-        await provider!.getSigner().signMessage("generateMetadata$tokenId");
-    return await nftService.postCharacterGenerateMetadata(tokenId, signature);
+    try {
+      var signature =
+          await provider!.getSigner().signMessage("generateMetadata$tokenId");
+      return await nftService.postCharacterGenerateMetadata(tokenId, signature);
+    } catch (e) {
+      return '';
+    }
   }
 }

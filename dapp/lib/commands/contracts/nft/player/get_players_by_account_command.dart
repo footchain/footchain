@@ -5,14 +5,18 @@ class GetPlayersByAccountCommand extends BaseCommand {
     final balance = await appModel.nftContract!
         .call<BigInt>("balanceOf", [appModel.user!.address]);
 
-    List<String> tokenIds = [];
-    for (var i = 0; i < balance.toInt(); i++) {
-      final tokenId = await appModel.nftContract!
-          .call<BigInt>("tokenOfOwnerByIndex", [appModel.user!.address, i]);
+    try {
+      List<String> tokenIds = [];
+      for (var i = 0; i < balance.toInt(); i++) {
+        final tokenId = await appModel.nftContract!
+            .call<BigInt>("tokenOfOwnerByIndex", [appModel.user!.address, i]);
 
-      final uri = await appModel.nftContract!.call("tokenURI", [tokenId]);
-      tokenIds.add(uri);
+        final uri = await appModel.nftContract!.call("tokenURI", [tokenId]);
+        tokenIds.add(uri);
+      }
+      return tokenIds;
+    } catch (e) {
+      return [];
     }
-    return tokenIds;
   }
 }
