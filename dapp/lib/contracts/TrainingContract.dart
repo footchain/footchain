@@ -10,7 +10,7 @@ class TrainingContract {
         },
         {
           "internalType": "contract IERC721",
-          "name": "jogador_",
+          "name": "player_",
           "type": "address"
         }
       ],
@@ -77,25 +77,31 @@ class TrainingContract {
           "type": "uint256"
         }
       ],
-      "name": "getPlayerStatus",
+      "name": "getPlayerBeginTimeTraining",
       "outputs": [
         {
-          "internalType": "bool",
+          "internalType": "uint256",
           "name": "",
-          "type": "bool"
+          "type": "uint256"
         }
       ],
       "stateMutability": "view",
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "jogador",
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "playerId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getPlayerStatus",
       "outputs": [
         {
-          "internalType": "contract IERC721",
+          "internalType": "bool",
           "name": "",
-          "type": "address"
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -116,6 +122,19 @@ class TrainingContract {
           "internalType": "bool",
           "name": "",
           "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "player",
+      "outputs": [
+        {
+          "internalType": "contract IERC721",
+          "name": "",
+          "type": "address"
         }
       ],
       "stateMutability": "view",

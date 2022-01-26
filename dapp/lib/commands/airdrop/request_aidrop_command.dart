@@ -8,7 +8,7 @@ class RequestAirDropCommand extends BaseCommand {
     final result =
         await airdropService.postRequest(token, appModel.user!.address!);
     if (result != null) {
-      final amount = EthUtils.parseEther("1");
+      final amount = EthUtils.parseEther("10");
       final tx = await appModel.airdropContract!.send("claimTokens",
           [appModel.user!.address, amount, result.v, result.r, result.s]);
       await tx.wait();
