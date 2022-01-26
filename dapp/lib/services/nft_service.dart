@@ -12,4 +12,13 @@ class NftService {
     Map<String, dynamic> map = jsonDecode(response.body);
     return CharacterDto.fromJson(map);
   }
+
+  Future<String> postCharacterGenerateMetadata(
+    BigInt tokenId,
+    String signature,
+  ) async {
+    var url = Uri.parse('${Constants.functionUri}generateMetadata');
+    var response = await http.post(url, body: {tokenId, signature});
+    return response.body;
+  }
 }

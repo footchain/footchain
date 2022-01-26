@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 
 import '../commands/contracts/nft/player/get_player_detail_command.dart';
+import '../commands/contracts/nft/player/player_generate_metadata_command.dart';
 import '../commands/training/player/finish_training_command.dart';
 import '../commands/training/player/start_training_command.dart';
 import '../dto/character_dto.dart';
@@ -13,7 +14,7 @@ import '../utils/get_character_image.dart';
 import '../utils/utils.dart';
 
 class CharacterCardWidget extends StatefulWidget {
-  final BigInt token;
+  final String token;
 
   const CharacterCardWidget({Key? key, required this.token}) : super(key: key);
 
@@ -24,17 +25,60 @@ class CharacterCardWidget extends StatefulWidget {
 class _CharacterCardWidgetState extends State<CharacterCardWidget> {
   var _executingTransaction = false;
   var _inTraining = false;
+  BigInt? _tokenId;
 
   @override
   void initState() {
     super.initState();
+
+    var seed = widget.token.split('//');
+    _tokenId = BigInt.tryParse(seed[1]);
+  }
+
+  void _generateMetadata() async {
+    var txHash = await PlayerGenerateMetadataCommand().execute(_tokenId!);
+    showSnackbarMessage(text: txHash);
+    // TODO:
+    // addEventListener txHash
+    //// txHash Done getPlayers again
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_tokenId != null) {
+      return Container(
+        width: 230,
+        height: 300,
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: Colors.white, width: 5),
+          borderRadius: borderRadiusAll,
+          boxShadow: const [boxShadow],
+        ),
+        child: Center(
+          child: GestureDetector(
+            onTap: _generateMetadata,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const FaIcon(FontAwesomeIcons.futbol, size: 56),
+                const SizedBox(height: 32),
+                Text(
+                  CustomLocalizations.of(context).openBoxButton,
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
     return FutureBuilder<CharacterDto>(
-      future: GetPlayerDetailCommand()
-          .execute('QmYAeoiEAD1qNyJ8A9hpAN13xuj3XaJXG7q2bVjVoeGMdB'),
+      future: GetPlayerDetailCommand().execute(widget.token),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const SizedBox(
@@ -63,7 +107,7 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
             children: [
               SizedBox(
                 child: Text(
-                  '${widget.token}',
+                  widget.token,
                   style: const TextStyle(fontSize: 8),
                   textAlign: TextAlign.center,
                 ),

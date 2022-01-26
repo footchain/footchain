@@ -22,6 +22,7 @@ class CustomLocalizations {
       'buildingsButton': 'Buildings',
       'matchesButton': 'Matches',
       'marketplaceButton': 'Marketplace',
+      'openBoxButton': 'Open box',
 
       // How to play
       'howToPlayMessage1':
@@ -78,6 +79,7 @@ class CustomLocalizations {
       'buildingsButton': 'Edifícios',
       'matchesButton': 'Partidas',
       'marketplaceButton': 'Mercado',
+      'openBoxButton': 'Abrir caixa',
 
       // How to play
       'howToPlayMessage1':
@@ -147,6 +149,8 @@ class CustomLocalizations {
       _localizedValues[locale.languageCode]!['matchesButton']!;
   String get marketplaceButton =>
       _localizedValues[locale.languageCode]!['marketplaceButton']!;
+  String get openBoxButton =>
+      _localizedValues[locale.languageCode]!['openBoxButton']!;
 
   // How to play
   String get howToPlayMessage1 =>
