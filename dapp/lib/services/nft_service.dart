@@ -10,7 +10,7 @@ class NftService {
   Future<CharacterDto> getCharacterRequest(String token) async {
     var url = Uri.parse('${Constants.nftUrl}$token');
     var response = await http.get(url);
-    Map<String, dynamic> map = jsonDecode(response.body);
+    Map<String, dynamic> map = jsonDecode(utf8.decode(response.bodyBytes));
     return CharacterDto.fromJson(map);
   }
 
