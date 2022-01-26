@@ -71,7 +71,7 @@ class CustomLocalizations {
 
       // Erro messages
       'networkErrorMessage': 'Check if the network is available.',
-
+      'genericErrorMessage': 'Operation failed.',
       // Character card
       'startTrainingButton': 'Start training',
     },
@@ -135,7 +135,7 @@ class CustomLocalizations {
       'mintButton': 'Comprar',
       // Erro messages
       'networkErrorMessage': 'Verifique se a rede está disponível.',
-
+      'genericErrorMessage': 'Não foi possível realizar a operação',
       // Character card
       'startTrainingButton': 'Iniciar treino',
     },
@@ -219,7 +219,8 @@ class CustomLocalizations {
   // Erro Messages
   String get networkErrorMessage =>
       _localizedValues[locale.languageCode]!['networkErrorMessage']!;
-
+  String get genericErrorMessage =>
+      _localizedValues[locale.languageCode]!['genericErrorMessage']!;
   // Character card
   String get startTrainingButton =>
       _localizedValues[locale.languageCode]!['startTrainingButton']!;

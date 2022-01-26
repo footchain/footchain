@@ -88,6 +88,7 @@ class _MintNftViewState extends State<MintNftView> {
     try {
       setState(() {
         _executingTransaction = true;
+        _errorMessage = '';
       });
       final resultApprove = await ApproveCommand().execute();
       if (resultApprove != null) {
@@ -108,23 +109,12 @@ class _MintNftViewState extends State<MintNftView> {
         _executingTransaction = false;
         _errorMessage = e.data["message"];
       });
+    } on Exception catch (e) {
+      setState(() {
+        _executingTransaction = false;
+        _errorMessage = CustomLocalizations.of(context).genericErrorMessage;
+      });
     }
-  }
-
-  List<Widget> _buildTransactionArea() {
-    final List<Widget> widgets = [];
-    widgets.add(const SizedBox(height: 24));
-    widgets.add(FutureBuilder<TransactionReceipt>(
-      future: _tx!.wait(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text("Loading...");
-        } else {
-          return Text("Transaction Finished ${snapshot.data!.transactionHash}");
-        }
-      },
-    ));
-    return widgets;
   }
 
   Widget _buildHowToOpenBox() => Container(
