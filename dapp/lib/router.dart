@@ -5,7 +5,6 @@ import 'views/airdrop_view.dart';
 import 'views/how_to_play_view.dart';
 import 'views/mint_nft_view.dart';
 import 'views/players_view.dart';
-import 'views/roadmap_view.dart';
 import 'views/start_view.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -18,8 +17,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(const StartView(), settings);
     case howToPlayRoute:
       return _getPageRoute(const HowToPlayView(), settings);
-    case roadmapRoute:
-      return _getPageRoute(const RoadmapView(), settings);
     case mintNft:
       return _getPageRoute(const MintNftView(), settings);
     default:

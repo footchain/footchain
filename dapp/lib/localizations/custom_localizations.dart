@@ -13,6 +13,7 @@ class CustomLocalizations {
     'en': {
       //generic
       'transaction': 'Transaction',
+      'comingSoonMessage': 'Coming soon',
       // buttons
       'startButton': 'Play',
       'howToPlayButton': 'How to play?',
@@ -80,6 +81,7 @@ class CustomLocalizations {
     'pt': {
       //generic
       'transaction': 'Transação',
+      'comingSoonMessage': 'Em breve',
       // buttons
       'startButton': 'Jogar',
       'howToPlayButton': 'Como jogar?',
@@ -149,6 +151,8 @@ class CustomLocalizations {
   //generic
   String get transaction =>
       _localizedValues[locale.languageCode]!['transaction']!;
+  String get comingSoonMessage =>
+      _localizedValues[locale.languageCode]!['comingSoonMessage']!;
   // buttons
   String get startButton =>
       _localizedValues[locale.languageCode]!['startButton']!;

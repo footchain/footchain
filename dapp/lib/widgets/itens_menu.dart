@@ -45,12 +45,6 @@ class ItensMenu extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             ChangeRouteButtonWidget(
-              route: roadmapRoute,
-              label: CustomLocalizations.of(context).roadmapButton,
-              onPressed: () => closeDrawer(context),
-            ),
-            const SizedBox(height: 16),
-            ChangeRouteButtonWidget(
               label: CustomLocalizations.of(context).whitepaperButton,
               onPressed: () {
                 launch('https://mattheus-pirovani.gitbook.io/whitepaper/');
