@@ -44,7 +44,7 @@ contract PlayerTraining is Pausable {
 
     Footchain public footchain;
     IERC721 public player;
-    uint256 private THIRTY_MINUTES = 1 * 60;
+    uint256 private THIRTY_MINUTES = 30 * 60;
     address admin;
 
     constructor(Footchain footchain_, IERC721 player_) {
@@ -87,5 +87,9 @@ contract PlayerTraining is Pausable {
 
     function getPlayerStatus(uint256 playerId) public view returns (bool) {
         return playersTrainingControl[playerId].working;
+    }
+
+    function getPlayerBeginTimeTraining(uint256 playerId) public view returns (uint256) {
+        return playersTrainingControl[playerId].beginTime;
     }
 }
