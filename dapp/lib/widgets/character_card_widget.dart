@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 
 import '../commands/contracts/nft/player/get_player_detail_command.dart';
+import '../commands/contracts/nft/player/get_player_uri_by_id_command.dart';
+import '../commands/contracts/nft/player/player_generate_metadata_command.dart';
 import '../commands/training/player/finish_training_command.dart';
 import '../commands/training/player/start_training_command.dart';
 import '../dto/character_dto.dart';
@@ -13,7 +15,7 @@ import '../utils/get_character_image.dart';
 import '../utils/utils.dart';
 
 class CharacterCardWidget extends StatefulWidget {
-  final BigInt token;
+  final String token;
 
   const CharacterCardWidget({Key? key, required this.token}) : super(key: key);
 
@@ -23,18 +25,91 @@ class CharacterCardWidget extends StatefulWidget {
 
 class _CharacterCardWidgetState extends State<CharacterCardWidget> {
   var _executingTransaction = false;
+  var _executingMint = false;
   var _inTraining = false;
+  late String _tokenUri;
+  BigInt? _tokenId;
 
   @override
   void initState() {
     super.initState();
+    _tokenUri = widget.token.replaceFirst('ipfs://', '');
+    _tokenId = BigInt.tryParse(_tokenUri);
+  }
+
+  void _generateMetadata() async {
+    setState(() {
+      _executingMint = true;
+    });
+    var txHash = await PlayerGenerateMetadataCommand().execute(_tokenId!);
+
+    if (txHash.isNotEmpty) {
+      showSnackbarMessage(text: txHash);
+      await provider!.waitForTransaction(txHash);
+      var uri = await GetPlayerUriByIdCommand().execute(_tokenId!);
+      if (uri.isNotEmpty) {
+        setState(() {
+          _tokenUri = uri;
+          _tokenId = null;
+        });
+      }
+    } else {
+      showSnackbarMessage(
+          text: CustomLocalizations.of(context).genericErrorMessage);
+    }
+
+    setState(() {
+      _executingMint = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_executingMint) {
+      return const SizedBox(
+        width: 230,
+        height: 300,
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
+    if (_tokenId != null) {
+      return GestureDetector(
+        onTap: _generateMetadata,
+        child: Container(
+          width: 230,
+          height: 300,
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Colors.white, width: 5),
+            borderRadius: borderRadiusAll,
+            boxShadow: const [boxShadow],
+          ),
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('#$_tokenId'),
+                const FaIcon(FontAwesomeIcons.futbol, size: 56),
+                const SizedBox(height: 32),
+                Text(
+                  CustomLocalizations.of(context).openBoxButton,
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
     return FutureBuilder<CharacterDto>(
-      future: GetPlayerDetailCommand()
-          .execute('QmYAeoiEAD1qNyJ8A9hpAN13xuj3XaJXG7q2bVjVoeGMdB'),
+      future: GetPlayerDetailCommand().execute(_tokenUri),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const SizedBox(
@@ -63,8 +138,8 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
             children: [
               SizedBox(
                 child: Text(
-                  '${widget.token}',
-                  style: const TextStyle(fontSize: 8),
+                  '#$_tokenUri',
+                  style: const TextStyle(fontSize: 6),
                   textAlign: TextAlign.center,
                 ),
               ),

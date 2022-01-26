@@ -9,4 +9,6 @@ class Constants {
       "0x13508cFE8c0386d62089B27d09BDB846C305daA2";
   static const nftUrl = "https://gateway.pinata.cloud/ipfs/";
   static const explorerUriTx = "https://evmexplorer.velas.com/tx/";
+  static const functionUri =
+      "https://us-central1-footchain2022.cloudfunctions.net/";
 }

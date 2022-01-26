@@ -24,7 +24,9 @@ class CustomLocalizations {
       'buildingsButton': 'Buildings',
       'matchesButton': 'Matches',
       'marketplaceButton': 'Marketplace',
+      'openBoxButton': 'Open box',
       'boxButton': 'BOX',
+
       // How to play
       'howToPlayMessage1':
           'Welcome to the world of football! From now on you will have the chance to be a millionaire in the world of football. You will have the chance to hire professionals, some not so professionals, to bring money and success to your company. In addition, you will be able to acquire structures that can put your company in "otô patamar"',
@@ -89,6 +91,7 @@ class CustomLocalizations {
       'buildingsButton': 'Edifícios',
       'matchesButton': 'Partidas',
       'marketplaceButton': 'Mercado',
+      'openBoxButton': 'Abrir caixa',
       'boxButton': 'BOX',
 
       // How to play
@@ -167,6 +170,8 @@ class CustomLocalizations {
       _localizedValues[locale.languageCode]!['matchesButton']!;
   String get marketplaceButton =>
       _localizedValues[locale.languageCode]!['marketplaceButton']!;
+  String get openBoxButton =>
+      _localizedValues[locale.languageCode]!['openBoxButton']!;
   String get boxButton => _localizedValues[locale.languageCode]!['boxButton']!;
 
   // How to play

@@ -18,7 +18,7 @@ class _PlayersViewState extends State<PlayersView> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<BigInt>>(
+    return FutureBuilder<List<String>>(
       future: GetPlayersByAccountCommand().execute(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
