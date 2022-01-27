@@ -76,6 +76,7 @@ class CustomLocalizations {
       'genericErrorMessage': 'Operation failed.',
       // Character card
       'startTrainingButton': 'Start training',
+      'endTrainingButton': 'End training',
     },
     'pt': {
       //generic
@@ -141,6 +142,7 @@ class CustomLocalizations {
       'genericErrorMessage': 'Não foi possível realizar a operação',
       // Character card
       'startTrainingButton': 'Iniciar treino',
+      'endTrainingButton': 'Encerrar treino',
     },
   };
 
@@ -246,4 +248,6 @@ class CustomLocalizations {
   // Character card
   String get startTrainingButton =>
       _localizedValues[locale.languageCode]!['startTrainingButton']!;
+  String get endTrainingButton =>
+      _localizedValues[locale.languageCode]!['endTrainingButton']!;
 }
