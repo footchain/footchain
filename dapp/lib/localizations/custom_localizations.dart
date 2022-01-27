@@ -98,7 +98,7 @@ class CustomLocalizations {
 
       // How to play
       'howToPlayMessage1':
-          'Bem-Vindo ao mundo do futebol! A partir de agora você terá a chance de ser empresário do milionário mundo do futebol. Você terá a chance de contratar profissionais, alguns não tão profissionais assim, para trazerem dinheiro e sucesso para sua empresa. Além disso, você poderá adquirir estruturas que poderão colocar a sua empresa em “otô patamar”.',
+          'Bem-Vindo ao mundo do futebol! A partir de agora você terá a chance de ser empresário desse milionário mundo. Você terá a chance de contratar profissionais, alguns não tão profissionais assim, para trazerem dinheiro e sucesso para sua empresa. Além disso, você poderá adquirir estruturas que poderão colocar a sua empresa em “otô patamar”.',
       'howToPlayMessage2':
           'O jogo contará inicialmente com 5 personagens, cada uma possuindo habilidades específicas, permitindo assim, que você crie uma infinidade de estratégias para lucrar com sua empresa. Todas as habilidades das personagens serão pontuadas de 0 a 100.',
       'howToPlayMessage3':

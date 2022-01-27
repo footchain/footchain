@@ -17,19 +17,19 @@ class ChangeRouteButtonWidget extends StatelessWidget {
   }) : super(key: key);
 
   final _styleDefault = const TextStyle(
-    color: Colors.white,
-    fontWeight: FontWeight.w600,
-    fontSize: 24,
-  );
+      color: Colors.white,
+      fontWeight: FontWeight.w600,
+      fontSize: 24,
+      fontFamily: 'VT323');
 
   final _styleSelected = TextStyle(
-    color: Colors.red.shade500,
-    fontWeight: FontWeight.w900,
-    fontSize: 28,
-    shadows: const [
-      BoxShadow(offset: Offset(1, 1), color: Colors.black38, blurRadius: 1)
-    ],
-  );
+      color: Colors.red.shade500,
+      fontWeight: FontWeight.w900,
+      fontSize: 28,
+      shadows: const [
+        BoxShadow(offset: Offset(1, 1), color: Colors.black38, blurRadius: 1)
+      ],
+      fontFamily: 'VT323');
 
   _onTap() {
     if (route != null) {

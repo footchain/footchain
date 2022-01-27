@@ -32,16 +32,20 @@ class _AirdropViewState extends State<AirdropView> {
                 children: [
                   const Text(
                     "Airdrop FTC",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
-                  Text(CustomLocalizations.of(context).airdropMessage1),
+                  Text(
+                    CustomLocalizations.of(context).airdropMessage1,
+                    style: _subTitleStyle(),
+                  ),
                   const SizedBox(
                     height: 8,
                   ),
-                  Text(CustomLocalizations.of(context).airdropMessage2),
+                  Text(CustomLocalizations.of(context).airdropMessage2,
+                      style: _subTitleStyle()),
                   const SizedBox(
                     height: 24,
                   ),
@@ -94,6 +98,8 @@ class _AirdropViewState extends State<AirdropView> {
       ),
     );
   }
+
+  TextStyle _subTitleStyle() => TextStyle(fontSize: 24);
 
   Widget _buildProcessingTransaction() {
     return const CircularProgressIndicator();

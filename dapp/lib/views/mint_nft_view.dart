@@ -41,16 +41,20 @@ class _MintNftViewState extends State<MintNftView> {
                 children: [
                   Text(
                     CustomLocalizations.of(context).mintTitle,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
-                  Text(CustomLocalizations.of(context).mintTitle1),
+                  Text(
+                    CustomLocalizations.of(context).mintTitle1,
+                    style: _subTitleStyle(),
+                  ),
                   const SizedBox(
                     height: 8,
                   ),
-                  Text(CustomLocalizations.of(context).mintTitle2),
+                  Text(CustomLocalizations.of(context).mintTitle2,
+                      style: _subTitleStyle()),
                   const SizedBox(
                     height: 24,
                   ),
@@ -116,6 +120,8 @@ class _MintNftViewState extends State<MintNftView> {
       });
     }
   }
+
+  TextStyle _subTitleStyle() => TextStyle(fontSize: 24);
 
   Widget _buildHowToOpenBox() => Container(
         padding: const EdgeInsets.all(16),

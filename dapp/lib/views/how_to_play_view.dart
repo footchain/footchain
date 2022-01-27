@@ -70,7 +70,7 @@ class HowToPlayView extends StatelessWidget {
               descricao,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 24,
               ),
             ),
           ),
@@ -90,7 +90,7 @@ class HowToPlayView extends StatelessWidget {
               descricao,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 24,
               ),
             ),
           ),
@@ -126,7 +126,7 @@ class HowToPlayView extends StatelessWidget {
               descricao,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 24,
               ),
             ),
           ),
