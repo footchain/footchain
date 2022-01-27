@@ -112,7 +112,7 @@ class CustomLocalizations {
       'howToPlayMessage5':
           'Os jogadores terão características específicas que serão fundamentais para o resultado das partidas. São elas:',
       'howToPlayMessageHeight': 'Altura',
-      'howToPlayMessagePreferredFoot': 'Pé',
+      'howToPlayMessagePreferredFoot': 'Pé preferido',
       'howToPlayMessagePosition': 'Posição',
       // Air drop
       'airdropMessage1':
