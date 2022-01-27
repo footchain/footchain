@@ -1,3 +1,4 @@
+import 'package:dapp/commands/account/set_current_account_command.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web3/flutter_web3.dart';
 import 'package:get_it/get_it.dart';
@@ -32,6 +33,7 @@ class _AppScaffoldState extends State<AppScaffold> {
     await Future.delayed(const Duration(seconds: 2), () => true);
     if (Ethereum.isSupported) {
       requestUserConnectAccount();
+      _watchAccountChanges();
     } else {
       showSnackbarMessage(
         text: CustomLocalizations.of(context).networkErrorMessage,
@@ -52,6 +54,12 @@ class _AppScaffoldState extends State<AppScaffold> {
       // TODO
       print("USUARIO CANCELOU");
     }
+  }
+
+  void _watchAccountChanges() async {
+    ethereum!.onAccountsChanged((accounts) {
+      SetCurrentAccountCommand().execute(accounts.first);
+    });
   }
 
   @override
