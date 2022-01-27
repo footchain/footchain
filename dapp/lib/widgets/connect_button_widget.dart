@@ -30,16 +30,17 @@ class ConnectButtonWidget extends StatelessWidget {
             boxShadow,
           ],
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             svg,
+            SizedBox(
+              width: 8,
+            ),
             Text(
               CustomLocalizations.of(context).connectAccountButton,
-              style: const TextStyle(
-                fontWeight: FontWeight.w800,
-              ),
+              style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
               textAlign: TextAlign.center,
             ),
           ],
