@@ -18,12 +18,17 @@ class _PlayersViewState extends State<PlayersView> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<String>>(
+    return FutureBuilder<List<BigInt>>(
       future: GetPlayersByAccountCommand().execute(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-              child: SizedBox(width: 100, child: CircularProgressIndicator()));
+          return const SizedBox(
+            width: 230,
+            height: 300,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         }
 
         if (snapshot.data == null) {
@@ -42,9 +47,9 @@ class _PlayersViewState extends State<PlayersView> {
                   Wrap(
                     spacing: 32,
                     runSpacing: 32,
-                    children: players.map<Widget>((token) {
+                    children: players.map<Widget>((tokenId) {
                       return CharacterCardWidget(
-                        token: token,
+                        tokenId: tokenId,
                       );
                     }).toList(),
                   ),
