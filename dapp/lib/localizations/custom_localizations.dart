@@ -36,18 +36,17 @@ class CustomLocalizations {
       'howToPlayMessage3':
           'Main character of the game, will have a high capacity of collection, however it will require a series of cares so that it remains having a high performance. It can be combined with other characters to create a new character.',
       'howToPlayMessage4':
-          'All players, regardless of rarity level, will have the following abilities:\n\n'
-              '🔥 Attack\n'
-              '🛡️ Defense\n'
-              '🤫 Creativity\n'
-              '🕴️ tactic\n'
-              '🦶 Technique\n',
+          'All players, regardless of rarity level, will have the following abilities:',
       'howToPlayMessage5':
-          'Players will have specific characteristics that will be fundamental to the outcome of the matches. Are they:\n\n'
-              '🗻 Height\n'
-              '👣 Preferred foot\n'
-              '🚶‍♂️ Position\n',
-
+          'Players will have specific characteristics that will be fundamental to the outcome of the matches. Are they:',
+      'howToPlayMessageAttack': 'Attack',
+      'howToPlayMessageDefense': 'Defense',
+      'howToPlayMessageCreativity': 'Creativity',
+      'howToPlayMessageTactics': 'Tactics',
+      'howToPlayMessageTechnique': 'Technique',
+      'howToPlayMessageHeight': 'Height',
+      'howToPlayMessagePreferredFoot': 'Preferred foot',
+      'howToPlayMessagePosition': 'Position',
       // Air drop
       'airdropMessage1': 'We will issue a total of 1,000,000 FTCs via Airdrop.',
       'airdropMessage2': 'You will be entitled to 10 FTC per wallet.',
@@ -104,18 +103,17 @@ class CustomLocalizations {
       'howToPlayMessage3':
           'Principal personagem do jogo, terá uma alta capacidade de arrecadação, contudo exigirá uma série de cuidados para que permaneça tendo um alto desempenho. Poderá ser combinada com outras personagens para a criação de uma nova personagem.',
       'howToPlayMessage4':
-          'Todos os jogadores, independente do nível de raridade terão as seguintes habilidades:\n\n'
-              '🔥 Ataque\n\n'
-              '🛡️ Defesa\n\n'
-              '🤫 Criatividade\n\n'
-              '🕴️ Tática\n\n'
-              '🦶 Técnica\n\n',
+          'Todos os jogadores, independente do nível de raridade terão as seguintes habilidades:',
+      'howToPlayMessageAttack': 'Ataque',
+      'howToPlayMessageDefense': 'Defesa',
+      'howToPlayMessageCreativity': 'Criatividade',
+      'howToPlayMessageTactics': 'Tática',
+      'howToPlayMessageTechnique': 'Técnica',
       'howToPlayMessage5':
-          'Os jogadores terão características específicas que serão fundamentais para o resultado das partidas. São elas:\n\n'
-              '🗻 Altura\n\n'
-              '👣 Pé preferido\n\n'
-              '🚶‍♂️ Posição\n\n',
-
+          'Os jogadores terão características específicas que serão fundamentais para o resultado das partidas. São elas:',
+      'howToPlayMessageHeight': 'Altura',
+      'howToPlayMessagePreferredFoot': 'Pé',
+      'howToPlayMessagePosition': 'Posição',
       // Air drop
       'airdropMessage1':
           'Emitiremos um total de 1.000.000 de FTCs via Airdrop.',
@@ -189,7 +187,22 @@ class CustomLocalizations {
       _localizedValues[locale.languageCode]!['howToPlayMessage4']!;
   String get howToPlayMessage5 =>
       _localizedValues[locale.languageCode]!['howToPlayMessage5']!;
-
+  String get howToPlayMessageAttack =>
+      _localizedValues[locale.languageCode]!['howToPlayMessageAttack']!;
+  String get howToPlayMessageDefense =>
+      _localizedValues[locale.languageCode]!['howToPlayMessageDefense']!;
+  String get howToPlayMessageCreativity =>
+      _localizedValues[locale.languageCode]!['howToPlayMessageCreativity']!;
+  String get howToPlayMessageTactics =>
+      _localizedValues[locale.languageCode]!['howToPlayMessageTactics']!;
+  String get howToPlayMessageTechnique =>
+      _localizedValues[locale.languageCode]!['howToPlayMessageTechnique']!;
+  String get howToPlayMessageHeight =>
+      _localizedValues[locale.languageCode]!['howToPlayMessageHeight']!;
+  String get howToPlayMessagePreferredFoot =>
+      _localizedValues[locale.languageCode]!['howToPlayMessagePreferredFoot']!;
+  String get howToPlayMessagePosition =>
+      _localizedValues[locale.languageCode]!['howToPlayMessagePosition']!;
   // Airdrop
   String get airdropMessage1 =>
       _localizedValues[locale.languageCode]!['airdropMessage1']!;

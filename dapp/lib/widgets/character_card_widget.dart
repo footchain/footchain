@@ -242,14 +242,10 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                       children: [
                         SvgPicture.asset(
                           'assets/images/icons/attack.svg',
-                          semanticsLabel: 'Metamask logo',
+                          semanticsLabel: 'attack logo',
                           width: 24,
                           height: 24,
                         ),
-                        /*const Text(
-                          '🔥',
-                          style: TextStyle(fontSize: 14),
-                        ),*/
                         const SizedBox(width: 8),
                         FittedBox(
                           child: Text(
@@ -262,9 +258,11 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Text(
-                          '🛡️',
-                          style: TextStyle(fontSize: 14),
+                        SvgPicture.asset(
+                          'assets/images/icons/defense.svg',
+                          semanticsLabel: 'defense icon',
+                          width: 24,
+                          height: 24,
                         ),
                         const SizedBox(width: 8),
                         FittedBox(
@@ -278,10 +276,6 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        /*const Text(
-                          '🤫',
-                          style: TextStyle(fontSize: 14),
-                        ),*/
                         SvgPicture.asset(
                           'assets/images/icons/creativity.svg',
                           semanticsLabel: 'creativity icon',
@@ -300,9 +294,11 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Text(
-                          '🕴️',
-                          style: TextStyle(fontSize: 14),
+                        SvgPicture.asset(
+                          'assets/images/icons/tactics.svg',
+                          semanticsLabel: 'tactics icon',
+                          width: 24,
+                          height: 24,
                         ),
                         const SizedBox(width: 8),
                         FittedBox(
@@ -316,9 +312,11 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Text(
-                          '🦶',
-                          style: TextStyle(fontSize: 14),
+                        SvgPicture.asset(
+                          'assets/images/icons/technique.svg',
+                          semanticsLabel: 'technique icon',
+                          width: 24,
+                          height: 24,
                         ),
                         const SizedBox(width: 8),
                         FittedBox(
@@ -345,9 +343,11 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text(
-                          '🗻',
-                          style: TextStyle(fontSize: 16),
+                        SvgPicture.asset(
+                          'assets/images/icons/height.svg',
+                          semanticsLabel: 'height icon',
+                          width: 24,
+                          height: 24,
                         ),
                         const SizedBox(width: 5),
                         Text('${character.height!.value}',
@@ -358,9 +358,11 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text(
-                          '👣 ',
-                          style: TextStyle(fontSize: 16),
+                        SvgPicture.asset(
+                          'assets/images/icons/foot.svg',
+                          semanticsLabel: 'foot icon',
+                          width: 24,
+                          height: 24,
                         ),
                         const SizedBox(width: 5),
                         Text(
@@ -373,9 +375,11 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text(
-                          '🚶‍♂️ ',
-                          style: TextStyle(fontSize: 16),
+                        SvgPicture.asset(
+                          'assets/images/icons/position.svg',
+                          semanticsLabel: 'position icon',
+                          width: 24,
+                          height: 24,
                         ),
                         const SizedBox(width: 5),
                         Text('${character.position}',
