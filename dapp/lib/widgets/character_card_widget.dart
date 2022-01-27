@@ -223,7 +223,8 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
             ),
           ),
           const SizedBox(height: 8),
-          SizedBox(
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 8),
             child: Text(
               '${character.name}',
               style: TextStyle(
@@ -234,7 +235,11 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(
+          Container(
+            decoration: const BoxDecoration(
+              color: Color(0xFF202020),
+              borderRadius: BorderRadius.all(Radius.circular(4)),
+            ),
             height: 162,
             child: Center(
               child: Container(
@@ -248,8 +253,8 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
               ),
             ),
           ),
-          SizedBox(
-            height: 26,
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 8),
             child: Center(
               child: Text(
                 character.rarity?.toUpperCase() ?? '',
@@ -257,49 +262,6 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                   fontSize: 26,
                   color: colorByRarity(character.rarity),
                 ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 40,
-            child: Center(
-              child: Row(
-                children: [
-                  const Text(
-                    'Nivel: 1',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Container(
-                      width: double.infinity,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: borderRadiusAll,
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 25,
-                            child: Container(
-                              width: 10,
-                              height: 6,
-                              decoration: const BoxDecoration(
-                                color: colorPrimary,
-                                borderRadius: borderRadiusAll,
-                              ),
-                            ),
-                          ),
-                          const Expanded(
-                            flex: 75,
-                            child: SizedBox(),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ),
           ),
@@ -545,7 +507,7 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                         ? '${(Duration(seconds: remainingTraining))}'
                             .split('.')[0]
                             .padLeft(8, '0')
-                        : 'Finish',
+                        : CustomLocalizations.of(context).endTrainingButton,
                     style: const TextStyle(fontSize: 20),
                   ),
                 ),
