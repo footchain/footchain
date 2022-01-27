@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
             title: 'Footchain',
             theme: ThemeData(
               primarySwatch: Colors.red,
-              textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Inter'),
+              textTheme: Theme.of(context).textTheme.apply(fontFamily: 'VT323'),
             ),
             builder: (context, child) => AppScaffold(child: child),
             navigatorKey: appModel.navigatorKey,

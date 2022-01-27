@@ -46,7 +46,7 @@ class WalletNumberWidget extends StatelessWidget {
           Text(
             '${address.substring(0, 6)}...${address.substring(address.length - 3)}',
             style: const TextStyle(
-                fontWeight: FontWeight.w500, color: Colors.white),
+                fontWeight: FontWeight.w500, color: Colors.white, fontSize: 20),
           ),
           const SizedBox(
             width: 8,
@@ -75,10 +75,8 @@ class TokenBalanceWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       child: Text(
         '\$FTC: ${balance ?? '0'}',
-        style: Theme.of(context)
-            .textTheme
-            .bodyText2
-            ?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+            fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),
       ),
     );
   }

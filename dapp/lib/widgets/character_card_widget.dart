@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_web3/flutter_web3.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -202,7 +203,7 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
 
   Widget _card(CharacterDto character) {
     return Container(
-      width: 230,
+      width: 260,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -217,8 +218,8 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
           SizedBox(
             child: Text(
               '#$_tokenUri',
-              style: const TextStyle(fontSize: 6),
               textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 12),
             ),
           ),
           const SizedBox(height: 8),
@@ -226,7 +227,7 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
             child: Text(
               '${character.name}',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 24,
                 fontWeight: FontWeight.w600,
                 color: colorByRarity(character.rarity),
               ),
@@ -248,25 +249,25 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
             ),
           ),
           SizedBox(
-            height: 25,
+            height: 26,
             child: Center(
               child: Text(
                 character.rarity?.toUpperCase() ?? '',
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: 26,
                   color: colorByRarity(character.rarity),
                 ),
               ),
             ),
           ),
           SizedBox(
-            height: 25,
+            height: 40,
             child: Center(
               child: Row(
                 children: [
                   const Text(
                     'Nivel: 1',
-                    style: TextStyle(fontSize: 10),
+                    style: TextStyle(fontSize: 16),
                   ),
                   const SizedBox(width: 8),
                   Expanded(
@@ -303,7 +304,7 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               border: Border(
@@ -317,15 +318,17 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      '🔥',
-                      style: TextStyle(fontSize: 14),
+                    SvgPicture.asset(
+                      'assets/images/icons/attack.svg',
+                      semanticsLabel: 'attack logo',
+                      width: 24,
+                      height: 24,
                     ),
                     const SizedBox(width: 8),
                     FittedBox(
                       child: Text(
                         '${character.attack!.value}',
-                        style: const TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ),
                   ],
@@ -333,15 +336,17 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      '🛡️',
-                      style: TextStyle(fontSize: 14),
+                    SvgPicture.asset(
+                      'assets/images/icons/defense.svg',
+                      semanticsLabel: 'defense icon',
+                      width: 24,
+                      height: 24,
                     ),
                     const SizedBox(width: 8),
                     FittedBox(
                       child: Text(
                         '${character.defense!.value}',
-                        style: const TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ),
                   ],
@@ -349,15 +354,17 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      '🤫',
-                      style: TextStyle(fontSize: 14),
+                    SvgPicture.asset(
+                      'assets/images/icons/creativity.svg',
+                      semanticsLabel: 'creativity icon',
+                      width: 24,
+                      height: 24,
                     ),
                     const SizedBox(width: 8),
                     FittedBox(
                       child: Text(
                         '${character.creativity!.value}',
-                        style: const TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ),
                   ],
@@ -365,15 +372,17 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      '🕴️',
-                      style: TextStyle(fontSize: 14),
+                    SvgPicture.asset(
+                      'assets/images/icons/tactics.svg',
+                      semanticsLabel: 'tactics icon',
+                      width: 24,
+                      height: 24,
                     ),
                     const SizedBox(width: 8),
                     FittedBox(
                       child: Text(
                         '${character.tactic!.value}',
-                        style: const TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ),
                   ],
@@ -381,15 +390,17 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      '🦶',
-                      style: TextStyle(fontSize: 14),
+                    SvgPicture.asset(
+                      'assets/images/icons/technique.svg',
+                      semanticsLabel: 'technique icon',
+                      width: 24,
+                      height: 24,
                     ),
                     const SizedBox(width: 8),
                     FittedBox(
                       child: Text(
                         '${character.technique!.value}',
-                        style: const TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ),
                   ],
@@ -398,7 +409,7 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
             decoration: BoxDecoration(
               border: Border(
                   top: BorderSide(color: colorByRarity(character.rarity))),
@@ -410,36 +421,51 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
-                      '🗻',
-                      style: TextStyle(fontSize: 12),
+                    SvgPicture.asset(
+                      'assets/images/icons/height.svg',
+                      semanticsLabel: 'height icon',
+                      width: 24,
+                      height: 24,
                     ),
                     const SizedBox(width: 5),
-                    Text('${character.height!.value}'),
+                    Text(
+                      '${character.height!.value}',
+                      style: const TextStyle(fontSize: 16),
+                    ),
                   ],
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
-                      '👣 ',
-                      style: TextStyle(fontSize: 12),
+                    SvgPicture.asset(
+                      'assets/images/icons/foot.svg',
+                      semanticsLabel: 'foot icon',
+                      width: 24,
+                      height: 24,
                     ),
                     const SizedBox(width: 5),
-                    Text('${character.preferredFoot}'),
+                    Text(
+                      '${character.preferredFoot}',
+                      style: const TextStyle(fontSize: 16),
+                    ),
                   ],
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
-                      '🚶‍♂️ ',
-                      style: TextStyle(fontSize: 12),
+                    SvgPicture.asset(
+                      'assets/images/icons/position.svg',
+                      semanticsLabel: 'position icon',
+                      width: 24,
+                      height: 24,
                     ),
                     const SizedBox(width: 5),
-                    Text('${character.position}')
+                    Text(
+                      '${character.position}',
+                      style: const TextStyle(fontSize: 16),
+                    )
                   ],
                 ),
               ],
@@ -481,7 +507,7 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
           ? const Center(child: CircularProgressIndicator())
           : Text(
               CustomLocalizations.of(context).startTrainingButton,
-              style: const TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 20),
             ),
       onPressed: _executingTransaction ? null : _startTraining,
     );
@@ -520,7 +546,7 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
                             .split('.')[0]
                             .padLeft(8, '0')
                         : 'Finish',
-                    style: const TextStyle(fontSize: 14),
+                    style: const TextStyle(fontSize: 20),
                   ),
                 ),
           onPressed: _executingTransaction || remainingTraining > 0
