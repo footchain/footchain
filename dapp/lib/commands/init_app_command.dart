@@ -12,8 +12,6 @@ class InitAppCommand extends BaseCommand {
 
     final storage = GetIt.I.get<Storage>();
     final user = await storage.read('user');
-    if (user != null) {
-      ConnectMetamaskCommand().execute();
-    }
+    await ConnectMetamaskCommand().execute();
   }
 }

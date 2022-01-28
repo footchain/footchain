@@ -7,6 +7,7 @@ import '../../storage/storage.dart';
 import '../../utils/constants.dart';
 import '../../utils/utils.dart';
 import '../base_command.dart';
+import '../../commands/network/add_network_command.dart';
 import 'set_current_account_command.dart';
 
 class ConnectMetamaskCommand extends BaseCommand {
@@ -14,38 +15,18 @@ class ConnectMetamaskCommand extends BaseCommand {
     try {
       if (appModel.networkEnabled) {
         var currentChain = await ethereum!.getChainId();
-
         if (currentChain != Constants.chainId) {
           try {
             await ethereum!.walletSwitchChain(Constants.chainId);
           } catch (e) {
             if (e.toString().contains('4902')) {
-              var chainId = 111; // 106
-              var chainName = 'Velas Testnet'; // Velas
-              var nativeCurrency = CurrencyParams(
-                name: 'VelasTestnet',
-                symbol: 'VLX',
-                decimals: 18,
-              ); // CurrencyParams(name: 'velas', symbol: 'VLX', decimals: 18);
-              var rpcUrls = [
-                'https://evmexplorer.testnet.velas.com/rpc'
-              ]; // ['https://evmexplorer.velas.com/rpc'];
-              var blockExplorerUrls = [
-                'https://evmexplorer.testnet.velas.com'
-              ]; // ['https://evmexplorer.velas.com'];
-
               try {
-                await ethereum!.walletAddChain(
-                  chainId: chainId,
-                  chainName: chainName,
-                  nativeCurrency: nativeCurrency,
-                  rpcUrls: rpcUrls,
-                  blockExplorerUrls: blockExplorerUrls,
-                );
+                await AddNetworkCommand().execute();
               } catch (e) {
                 showSnackbarMessage(
                     text: CustomLocalizations.of(GetIt.I.get<BuildContext>())
                         .networkErrorMessage);
+                return;
               }
             }
           }
@@ -62,6 +43,7 @@ class ConnectMetamaskCommand extends BaseCommand {
         }
 
         final accs = await ethereum!.requestAccount();
+
         if (accs.isNotEmpty) {
           final storage = GetIt.I.get<Storage>();
           storage.save('user', accs.first);

@@ -4,6 +4,8 @@ import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../commands/airdrop/request_aidrop_command.dart';
+import '../commands/account/connect_metamask_command.dart';
+import '../commands/network/check_network_connection_command.dart';
 import '../localizations/localizations.dart';
 import '../widgets/widgets.dart';
 
@@ -49,39 +51,7 @@ class _AirdropViewState extends State<AirdropView> {
                   const SizedBox(
                     height: 24,
                   ),
-                  if (!_executingTransaction)
-                    ElevatedButton(
-                        onPressed: () async {
-                          String token = await GRecaptchaV3.execute('submit') ??
-                              'null returned';
-                          try {
-                            setState(() {
-                              _executingTransaction = true;
-                              _transactionHash = "";
-                            });
-                            final result =
-                                await RequestAirDropCommand().execute(token);
-                            setState(() {
-                              _executingTransaction = false;
-                              if (result != null) {
-                                _transactionHash = result;
-                              }
-                            });
-                          } on EthereumException catch (e) {
-                            setState(() {
-                              _executingTransaction = false;
-                              _errorMessage = e.data["message"];
-                            });
-                          } on Exception catch (e) {}
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                              CustomLocalizations.of(context)
-                                  .requestAirdropButton,
-                              style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold)),
-                        )),
+                  if (!_executingTransaction) _requestAirdropButton(context),
                   const SizedBox(
                     height: 24,
                   ),
@@ -98,6 +68,40 @@ class _AirdropViewState extends State<AirdropView> {
       ),
     );
   }
+
+  Widget _requestAirdropButton(BuildContext context) => ElevatedButton(
+      onPressed: () async {
+        final connected = await CheckNetworkConnectionCommand().execute();
+        if (connected) {
+          String token =
+              await GRecaptchaV3.execute('submit') ?? 'null returned';
+          try {
+            setState(() {
+              _executingTransaction = true;
+              _transactionHash = "";
+            });
+            final result = await RequestAirDropCommand().execute(token);
+            setState(() {
+              _executingTransaction = false;
+              if (result != null) {
+                _transactionHash = result;
+              }
+            });
+          } on EthereumException catch (e) {
+            setState(() {
+              _executingTransaction = false;
+              _errorMessage = e.data["message"];
+            });
+          } on Exception catch (e) {}
+        } else {
+          await ConnectMetamaskCommand().execute();
+        }
+      },
+      child: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Text(CustomLocalizations.of(context).requestAirdropButton,
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+      ));
 
   TextStyle _subTitleStyle() => TextStyle(fontSize: 24);
 

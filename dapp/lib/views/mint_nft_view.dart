@@ -4,6 +4,8 @@ import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 
 import '../commands/contracts/marketplace/buy_nft_command.dart';
 import '../commands/contracts/token/approve_command.dart';
+import '../commands/account/connect_metamask_command.dart';
+import '../commands/network/check_network_connection_command.dart';
 import '../localizations/localizations.dart';
 import '../widgets/widgets.dart';
 
@@ -88,36 +90,41 @@ class _MintNftViewState extends State<MintNftView> {
   }
 
   void _mintNft() async {
-    String token = await GRecaptchaV3.execute('submit') ?? 'null returned';
-    try {
-      setState(() {
-        _executingTransaction = true;
-        _errorMessage = '';
-      });
-      final resultApprove = await ApproveCommand().execute();
-      if (resultApprove != null) {
-        final result = await BuyNftCommand().execute();
+    final connected = await CheckNetworkConnectionCommand().execute();
+    if (connected) {
+      String token = await GRecaptchaV3.execute('submit') ?? 'null returned';
+      try {
         setState(() {
-          _executingTransaction = false;
-          if (result != null) {
-            _transactionHash = result;
-          }
+          _executingTransaction = true;
+          _errorMessage = '';
         });
-      } else {
+        final resultApprove = await ApproveCommand().execute();
+        if (resultApprove != null) {
+          final result = await BuyNftCommand().execute();
+          setState(() {
+            _executingTransaction = false;
+            if (result != null) {
+              _transactionHash = result;
+            }
+          });
+        } else {
+          setState(() {
+            _executingTransaction = false;
+          });
+        }
+      } on EthereumException catch (e) {
         setState(() {
           _executingTransaction = false;
+          _errorMessage = e.data["message"];
+        });
+      } on Exception catch (e) {
+        setState(() {
+          _executingTransaction = false;
+          _errorMessage = CustomLocalizations.of(context).genericErrorMessage;
         });
       }
-    } on EthereumException catch (e) {
-      setState(() {
-        _executingTransaction = false;
-        _errorMessage = e.data["message"];
-      });
-    } on Exception catch (e) {
-      setState(() {
-        _executingTransaction = false;
-        _errorMessage = CustomLocalizations.of(context).genericErrorMessage;
-      });
+    } else {
+      await ConnectMetamaskCommand().execute();
     }
   }
 
