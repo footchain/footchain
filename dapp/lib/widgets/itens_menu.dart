@@ -47,7 +47,7 @@ class ItensMenu extends StatelessWidget {
             ChangeRouteButtonWidget(
               label: CustomLocalizations.of(context).whitepaperButton,
               onPressed: () {
-                launch('https://mattheus-pirovani.gitbook.io/whitepaper/');
+                launch('https://footchain.gitbook.io/whitepaper/');
                 closeDrawer(context);
               },
             ),
