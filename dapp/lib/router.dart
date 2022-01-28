@@ -1,3 +1,4 @@
+import 'package:dapp/views/marketplace_view.dart';
 import 'package:flutter/material.dart';
 
 import 'utils/constants/routes.dart';
@@ -19,6 +20,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(const HowToPlayView(), settings);
     case mintNft:
       return _getPageRoute(const MintNftView(), settings);
+    case marketplace:
+      return _getPageRoute(const MarketplaceView(), settings);
     default:
       return _getPageRoute(const StartView(), settings);
   }

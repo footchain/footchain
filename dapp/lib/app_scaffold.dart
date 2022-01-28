@@ -58,7 +58,9 @@ class _AppScaffoldState extends State<AppScaffold> {
 
   void _watchAccountChanges() async {
     ethereum!.onAccountsChanged((accounts) {
-      SetCurrentAccountCommand().execute(accounts.first);
+      if (accounts != null) {
+        SetCurrentAccountCommand().execute(accounts.first);
+      }
     });
   }
 

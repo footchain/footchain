@@ -77,6 +77,7 @@ class CustomLocalizations {
       // Character card
       'startTrainingButton': 'Start training',
       'endTrainingButton': 'End training',
+      'emptyPlayerList': 'Nenhum jogador na sua carteira'
     },
     'pt': {
       //generic
@@ -143,6 +144,7 @@ class CustomLocalizations {
       // Character card
       'startTrainingButton': 'Iniciar treino',
       'endTrainingButton': 'Encerrar treino',
+      'emptyPlayerList': 'Nenhum jogador na sua carteira'
     },
   };
 
@@ -250,4 +252,6 @@ class CustomLocalizations {
       _localizedValues[locale.languageCode]!['startTrainingButton']!;
   String get endTrainingButton =>
       _localizedValues[locale.languageCode]!['endTrainingButton']!;
+  String get emptyPlayerList =>
+      _localizedValues[locale.languageCode]!['emptyPlayerList']!;
 }

@@ -81,12 +81,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         label: CustomLocalizations.of(context).soccerPlayersButton,
       ),
       ChangeRouteButtonWidget(
-        route: null,
+        route: marketplace,
         label: CustomLocalizations.of(context).marketplaceButton,
-        onPressed: () {
-          showSnackbarMessage(
-              text: CustomLocalizations.of(context).comingSoonMessage);
-        },
       ),
       user != null && MediaQuery.of(context).size.width > 1030
           ? Padding(

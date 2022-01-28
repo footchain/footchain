@@ -6,10 +6,11 @@ import '../base_command.dart';
 
 class SetCurrentAccountCommand extends BaseCommand {
   Future execute(String currentAccount) async {
-    final balance = await GetTokenBalanceCommand().execute(currentAccount);
-
-    appModel.user = UserDto()
-      ..address = currentAccount
-      ..balance = EthUtils.formatEther(balance.toString());
+    try {
+      final balance = await GetTokenBalanceCommand().execute(currentAccount);
+      appModel.user = UserDto()
+        ..address = currentAccount
+        ..balance = EthUtils.formatEther(balance.toString());
+    } catch (e) {}
   }
 }
