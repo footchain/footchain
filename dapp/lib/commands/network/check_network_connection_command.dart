@@ -6,6 +6,6 @@ import '../../utils/constants.dart';
 class CheckNetworkConnectionCommand extends BaseCommand {
   Future<bool> execute() async {
     var currentChain = await ethereum!.getChainId();
-    return appModel.connected && currentChain != Constants.chainId;
+    return appModel.connected && currentChain == Constants.chainId;
   }
 }
