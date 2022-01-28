@@ -1,12 +1,13 @@
-import 'package:dapp/commands/account/set_current_account_command.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web3/flutter_web3.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
+import 'commands/account/set_current_account_command.dart';
 import 'commands/init_app_command.dart';
 import 'localizations/localizations.dart';
 import 'models/app_model.dart';
+import 'utils/constants.dart';
 import 'utils/utils.dart';
 import 'views/splash_view.dart';
 import 'widgets/widgets.dart';
@@ -32,7 +33,8 @@ class _AppScaffoldState extends State<AppScaffold> {
     GetIt.I.registerSingleton<BuildContext>(context);
     await Future.delayed(const Duration(seconds: 2), () => true);
     if (Ethereum.isSupported) {
-      requestUserConnectAccount();
+      _checkCurrentChain();
+      _watchChainChanges();
       _watchAccountChanges();
     } else {
       showSnackbarMessage(
@@ -44,16 +46,19 @@ class _AppScaffoldState extends State<AppScaffold> {
     });
   }
 
-  Future requestUserConnectAccount() async {
-    try {
-      final accs = await ethereum!.requestAccount();
-      if (accs.isNotEmpty) {
-        await InitAppCommand().execute(provider, accs.first);
-      }
-    } on Exception catch (e) {
-      // TODO
-      print("USUARIO CANCELOU");
+  void _checkCurrentChain() async {
+    var currentChain = await ethereum!.getChainId();
+    if (currentChain == Constants.chainId) {
+      InitAppCommand().execute(provider);
     }
+  }
+
+  void _watchChainChanges() async {
+    ethereum!.onChainChanged((chainId) {
+      if (chainId == Constants.chainId) {
+        InitAppCommand().execute(provider);
+      }
+    });
   }
 
   void _watchAccountChanges() async {
