@@ -11,4 +11,5 @@ class Constants {
   static const explorerUriTx = "https://evmexplorer.velas.com/tx/";
   static const functionUri =
       "https://us-central1-footchain2022.cloudfunctions.net/";
+  static const chainId = 111; // 106
 }
