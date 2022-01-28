@@ -1,5 +1,3 @@
-import 'package:flutter_web3/flutter_web3.dart';
-
 class Constants {
   static const footchainAddress = "0x201Fdf27716357FeA4e554Aae55a7B9b4Bd5Ff9B";
   static const playerAddress = "0x2B9c23A050C77b1b3282f941aA865C0F31D4A5E1";
@@ -14,16 +12,4 @@ class Constants {
   static const functionUri =
       "https://us-central1-footchain2022.cloudfunctions.net/";
   static const chainId = 111; // 106
-  static const chainName = 'Velas Testnet'; // Velas
-  static get nativeCurrency => CurrencyParams(
-      name: 'VelasTestnet',
-      symbol: 'VLX',
-      decimals:
-          18); // CurrencyParams(name: 'velas', symbol: 'VLX', decimals: 18);
-  static const rpcUrls = [
-    'https://evmexplorer.testnet.velas.com/rpc'
-  ]; // ['https://evmexplorer.velas.com/rpc'];
-  static const blockExplorerUrls = [
-    'https://evmexplorer.testnet.velas.com'
-  ]; // ['https://evmexplorer.velas.com'];
 }

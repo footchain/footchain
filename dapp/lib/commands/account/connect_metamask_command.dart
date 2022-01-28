@@ -20,13 +20,27 @@ class ConnectMetamaskCommand extends BaseCommand {
             await ethereum!.walletSwitchChain(Constants.chainId);
           } catch (e) {
             if (e.toString().contains('4902')) {
+              var chainId = 111; // 106
+              var chainName = 'Velas Testnet'; // Velas
+              var nativeCurrency = CurrencyParams(
+                name: 'VelasTestnet',
+                symbol: 'VLX',
+                decimals: 18,
+              ); // CurrencyParams(name: 'velas', symbol: 'VLX', decimals: 18);
+              var rpcUrls = [
+                'https://evmexplorer.testnet.velas.com/rpc'
+              ]; // ['https://evmexplorer.velas.com/rpc'];
+              var blockExplorerUrls = [
+                'https://evmexplorer.testnet.velas.com'
+              ]; // ['https://evmexplorer.velas.com'];
+
               try {
                 await ethereum!.walletAddChain(
-                  chainId: Constants.chainId,
-                  chainName: Constants.chainName,
-                  nativeCurrency: Constants.nativeCurrency,
-                  rpcUrls: Constants.rpcUrls,
-                  blockExplorerUrls: Constants.blockExplorerUrls,
+                  chainId: chainId,
+                  chainName: chainName,
+                  nativeCurrency: nativeCurrency,
+                  rpcUrls: rpcUrls,
+                  blockExplorerUrls: blockExplorerUrls,
                 );
               } catch (e) {
                 showSnackbarMessage(
