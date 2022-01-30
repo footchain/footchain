@@ -277,95 +277,115 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
               spacing: 8,
               runSpacing: 8,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/icons/attack.svg',
-                      semanticsLabel: 'attack logo',
-                      width: 24,
-                      height: 24,
-                    ),
-                    const SizedBox(width: 8),
-                    FittedBox(
-                      child: Text(
-                        '${character.attack!.value}',
-                        style: const TextStyle(fontSize: 16),
+                Tooltip(
+                  message:
+                      CustomLocalizations.of(context).howToPlayMessageAttack,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/icons/attack.svg',
+                        semanticsLabel: 'attack logo',
+                        width: 24,
+                        height: 24,
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 8),
+                      FittedBox(
+                        child: Text(
+                          '${character.attack!.value}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/icons/defense.svg',
-                      semanticsLabel: 'defense icon',
-                      width: 24,
-                      height: 24,
-                    ),
-                    const SizedBox(width: 8),
-                    FittedBox(
-                      child: Text(
-                        '${character.defense!.value}',
-                        style: const TextStyle(fontSize: 16),
+                Tooltip(
+                  message:
+                      CustomLocalizations.of(context).howToPlayMessageDefense,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/icons/defense.svg',
+                        semanticsLabel: 'defense icon',
+                        width: 24,
+                        height: 24,
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 8),
+                      FittedBox(
+                        child: Text(
+                          '${character.defense!.value}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/icons/creativity.svg',
-                      semanticsLabel: 'creativity icon',
-                      width: 24,
-                      height: 24,
-                    ),
-                    const SizedBox(width: 8),
-                    FittedBox(
-                      child: Text(
-                        '${character.creativity!.value}',
-                        style: const TextStyle(fontSize: 16),
+                Tooltip(
+                  message: CustomLocalizations.of(context)
+                      .howToPlayMessageCreativity,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/icons/creativity.svg',
+                        semanticsLabel: 'creativity icon',
+                        width: 24,
+                        height: 24,
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 8),
+                      FittedBox(
+                        child: Text(
+                          '${character.creativity!.value}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/icons/tactics.svg',
-                      semanticsLabel: 'tactics icon',
-                      width: 24,
-                      height: 24,
-                    ),
-                    const SizedBox(width: 8),
-                    FittedBox(
-                      child: Text(
-                        '${character.tactic!.value}',
-                        style: const TextStyle(fontSize: 16),
+                Tooltip(
+                  message:
+                      CustomLocalizations.of(context).howToPlayMessageTactics,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/icons/tactics.svg',
+                        semanticsLabel: 'tactics icon',
+                        width: 24,
+                        height: 24,
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 8),
+                      FittedBox(
+                        child: Text(
+                          '${character.tactic!.value}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/icons/technique.svg',
-                      semanticsLabel: 'technique icon',
-                      width: 24,
-                      height: 24,
-                    ),
-                    const SizedBox(width: 8),
-                    FittedBox(
-                      child: Text(
-                        '${character.technique!.value}',
-                        style: const TextStyle(fontSize: 16),
+                Tooltip(
+                  message:
+                      CustomLocalizations.of(context).howToPlayMessageTechnique,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/icons/technique.svg',
+                        semanticsLabel: 'technique icon',
+                        width: 24,
+                        height: 24,
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 8),
+                      FittedBox(
+                        child: Text(
+                          '${character.technique!.value}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -379,56 +399,68 @@ class _CharacterCardWidgetState extends State<CharacterCardWidget> {
             child: Wrap(
               alignment: WrapAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/icons/height.svg',
-                      semanticsLabel: 'height icon',
-                      width: 24,
-                      height: 24,
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      '${character.height!.value}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                  ],
+                Tooltip(
+                  message:
+                      CustomLocalizations.of(context).howToPlayMessageHeight,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/icons/height.svg',
+                        semanticsLabel: 'height icon',
+                        width: 24,
+                        height: 24,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        '${character.height!.value}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/icons/foot.svg',
-                      semanticsLabel: 'foot icon',
-                      width: 24,
-                      height: 24,
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      '${character.preferredFoot}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                  ],
+                Tooltip(
+                  message: CustomLocalizations.of(context)
+                      .howToPlayMessagePreferredFoot,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/icons/foot.svg',
+                        semanticsLabel: 'foot icon',
+                        width: 24,
+                        height: 24,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        '${character.preferredFoot}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/icons/position.svg',
-                      semanticsLabel: 'position icon',
-                      width: 24,
-                      height: 24,
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      '${character.position}',
-                      style: const TextStyle(fontSize: 16),
-                    )
-                  ],
+                Tooltip(
+                  message:
+                      CustomLocalizations.of(context).howToPlayMessagePosition,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/icons/position.svg',
+                        semanticsLabel: 'position icon',
+                        width: 24,
+                        height: 24,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        '${character.position}',
+                        style: const TextStyle(fontSize: 16),
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
