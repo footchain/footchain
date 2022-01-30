@@ -1,6 +1,5 @@
 import 'dart:ui' as ui;
 
-import 'package:dapp/utils/constants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
@@ -12,6 +11,7 @@ import 'localizations/localizations.dart';
 import 'models/app_model.dart';
 import 'router.dart';
 import 'setup_service_locator.dart';
+import 'utils/constants/routes.dart';
 
 void main() async {
   initServiceLocator();
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       value: appModel,
       child: Builder(
         builder: (context) {
-          return MaterialApp(
+          var materialApp = MaterialApp(
             debugShowCheckedModeBanner: false,
             localizationsDelegates: const [
               CustomLocalizationsDelegate(),
@@ -70,7 +70,27 @@ class MyApp extends StatelessWidget {
             onGenerateRoute: generateRoute,
             initialRoute: airdropRoute,
           );
+
+          return banner(materialApp);
         },
+      ),
+    );
+  }
+
+  Widget banner(MaterialApp materialApp) {
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Banner(
+        message: 'Beta',
+        location: BannerLocation.topEnd,
+        textStyle: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w900,
+          fontSize: 26,
+          fontFamily: 'VT323',
+        ),
+        color: Colors.red,
+        child: materialApp,
       ),
     );
   }
