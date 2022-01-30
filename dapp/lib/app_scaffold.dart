@@ -123,6 +123,11 @@ class _AppScaffoldState extends State<AppScaffold> {
                 );
               },
             ),
+            const Positioned(
+              bottom: 45,
+              left: 16,
+              child: SocialMediaWidget(),
+            ),
           ],
         ),
       );
