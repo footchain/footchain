@@ -15,12 +15,18 @@ npx hardhat help
 ```
 # Contratos
 
-- Token.sol
+- Footchain.sol
     Contrato responsável por emitir a moeda oficial do jogo.
 
-- PlayerNFT.sol
+- Player.sol
     Nesse contrato estão mintados os jogadores
 
-- Training.sol
-    Nesse contrato são contralados os treinamentos de um jogador. Finalizado o treinamento o dono do jogador receberá uma quantidade de tokens.
+- PlayerTraining.sol
+    Nesse contrato são contralados os treinamentos de um jogador. Finalizado o treinamento o dono do jogador (NFT) receberá uma quantidade de tokens.
 
+- MarketplacePlayerV1.sol
+    Nesse contrato será possível adquirir um NFT que representará um jogador. Ele manipulará os FTCs do requisitante,
+    transferindo para o contrato Team.sol e, por fim, fará o mint do NFT, através do contrato Player.sol.
+
+- Aidrop.sol
+    Contrato que mintará FTCs para que os jogadores possam adquirir a ssua primeira box.
