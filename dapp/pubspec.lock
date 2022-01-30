@@ -103,9 +103,11 @@ packages:
   flutter_web3:
     dependency: "direct main"
     description:
-      path: "../../flutter_web3"
-      relative: true
-    source: path
+      path: "."
+      ref: main
+      resolved-ref: "7653e0cca096a45a3804098679f38c3e4eb08acd"
+      url: "git://github.com/y-pakorn/flutter_web3.git"
+    source: git
     version: "2.1.6"
   flutter_web_plugins:
     dependency: transitive
