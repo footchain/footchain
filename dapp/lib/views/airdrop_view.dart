@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web3/flutter_web3.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import '../commands/airdrop/request_aidrop_command.dart';
 import '../commands/account/connect_metamask_command.dart';
+import '../commands/airdrop/request_aidrop_command.dart';
 import '../commands/network/check_network_connection_command.dart';
 import '../localizations/localizations.dart';
+import '../widgets/token_copy_widget.dart';
 import '../widgets/widgets.dart';
 
 class AirdropView extends StatefulWidget {
@@ -59,7 +59,8 @@ class _AirdropViewState extends State<AirdropView> {
                   TransactionResultWidget(
                     txHash: _transactionHash,
                     errorMessage: _errorMessage,
-                  )
+                  ),
+                  const TokenCopyWidget(),
                 ],
               ),
             ),
@@ -92,18 +93,18 @@ class _AirdropViewState extends State<AirdropView> {
               _executingTransaction = false;
               _errorMessage = e.data["message"];
             });
-          } on Exception catch (e) {}
+          } on Exception catch (_) {}
         } else {
           await ConnectMetamaskCommand().execute();
         }
       },
       child: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Text(CustomLocalizations.of(context).requestAirdropButton,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
       ));
 
-  TextStyle _subTitleStyle() => TextStyle(fontSize: 24);
+  TextStyle _subTitleStyle() => const TextStyle(fontSize: 24);
 
   Widget _buildProcessingTransaction() {
     return const CircularProgressIndicator();

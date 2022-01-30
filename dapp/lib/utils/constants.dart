@@ -12,4 +12,6 @@ class Constants {
   static const functionUri =
       "https://us-central1-footchain2022.cloudfunctions.net/";
   static const chainId = 111; // 106
+  static const footchainSymbol = "FTC";
+  static const footchainDecimals = 18;
 }
