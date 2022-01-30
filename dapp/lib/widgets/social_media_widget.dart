@@ -22,7 +22,7 @@ class SocialMediaWidget extends StatelessWidget {
         const SizedBox(height: 16),
         IconButton(
           onPressed: () {
-            launch('https://github.com/mattheuspirovani/footchain');
+            launch('https://github.com/footchain/footchain');
           },
           icon: FaIcon(
             FontAwesomeIcons.githubAlt,
