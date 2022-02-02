@@ -71,6 +71,8 @@ class CustomLocalizations {
           'In the current phase, only PLAYER characters will be created and their characteristics will be generated randomly.',
       'mintTitle2': 'Each mint of a new character will cost 10 FTC.',
       'mintButton': 'Create',
+      'howtoOpenBox':
+          'Go to the Play screen to open your box. Menu: Play => Players',
 
       // Erro messages
       'networkErrorMessage': 'Check if the network is available.',
@@ -140,6 +142,8 @@ class CustomLocalizations {
           'Na fase atual apenas personagens do tipo JOGADOR serão criados e suas características serão geradas de forma aleatória.',
       'mintTitle2': 'Cada emissão de um novo personagem custará 10 FTC.',
       'mintButton': 'Comprar',
+      'howtoOpenBox':
+          'A box poderá ser aberta na tela de Personagens. Menu: Jogar => Personagens',
       // Erro messages
       'networkErrorMessage': 'Verifique se a rede está disponível.',
       'genericErrorMessage': 'Não foi possível realizar a operação',
@@ -245,6 +249,8 @@ class CustomLocalizations {
       _localizedValues[locale.languageCode]!['mintTitle2']!;
   String get mintButton =>
       _localizedValues[locale.languageCode]!['mintButton']!;
+  String get howtoOpenBox =>
+      _localizedValues[locale.languageCode]!['howtoOpenBox']!;
 
   // Erro Messages
   String get networkErrorMessage =>

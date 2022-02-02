@@ -137,7 +137,9 @@ class _MintNftViewState extends State<MintNftView> {
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Colors.yellow, width: 3)),
         child: Text(
-            "A box poderá ser aberta na tela de Personagens. Menu: Jogar => Personagens"),
+          CustomLocalizations.of(context).howtoOpenBox,
+          style: TextStyle(fontSize: 20),
+        ),
       );
 
   Widget _buildProcessingTransaction() => const CircularProgressIndicator();
